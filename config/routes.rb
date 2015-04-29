@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  resources :rounds do
+    resources :course
+  end
+
+  devise_for :players
+
   root 'rounds#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
