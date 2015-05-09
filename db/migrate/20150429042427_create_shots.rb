@@ -6,7 +6,6 @@ class CreateShots < ActiveRecord::Migration
       t.integer :club_id
       t.integer :number
       t.integer :mulligan
-      t.boolean :slice
       t.boolean :fade
       t.boolean :squib
 

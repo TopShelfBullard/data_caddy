@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150429044204) do
+ActiveRecord::Schema.define(version: 20150501054732) do
 
   create_table "clubs", force: :cascade do |t|
     t.string   "name"
@@ -34,10 +34,16 @@ ActiveRecord::Schema.define(version: 20150429044204) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "played_holes", force: :cascade do |t|
+    t.integer  "hole_id"
+    t.integer  "round_id"
+    t.integer  "player_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "players", force: :cascade do |t|
-    t.string   "name",                   default: "", null: false
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.string   "name"
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -51,7 +57,6 @@ ActiveRecord::Schema.define(version: 20150429044204) do
   end
 
   add_index "players", ["email"], name: "index_players_on_email", unique: true
-  add_index "players", ["name"], name: "index_players_on_name", unique: true
   add_index "players", ["reset_password_token"], name: "index_players_on_reset_password_token", unique: true
 
   create_table "rounds", force: :cascade do |t|
@@ -71,7 +76,6 @@ ActiveRecord::Schema.define(version: 20150429044204) do
     t.integer  "club_id"
     t.integer  "number"
     t.integer  "mulligan"
-    t.boolean  "slice"
     t.boolean  "fade"
     t.boolean  "squib"
     t.datetime "created_at", null: false

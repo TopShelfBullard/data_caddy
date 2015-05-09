@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
 
+
+
   resources :rounds do
-    resources :course
+    resources :courses
+    resources :holes
   end
 
   devise_for :players
