@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150511043015) do
+ActiveRecord::Schema.define(version: 20150511054710) do
 
   create_table "clubs", force: :cascade do |t|
     t.string   "name"
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 20150511043015) do
     t.boolean  "tee_middle"
     t.boolean  "Off_the_turf"
     t.boolean  "elevated_tee"
+    t.integer  "shot_id"
   end
 
   create_table "played_holes", force: :cascade do |t|
@@ -106,6 +107,7 @@ ActiveRecord::Schema.define(version: 20150511043015) do
     t.boolean  "topped"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+    t.integer  "shot_id"
   end
 
   create_table "rounds", force: :cascade do |t|
