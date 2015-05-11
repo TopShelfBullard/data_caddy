@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150509045822) do
+ActiveRecord::Schema.define(version: 20150511043015) do
 
   create_table "clubs", force: :cascade do |t|
     t.string   "name"
@@ -32,6 +32,29 @@ ActiveRecord::Schema.define(version: 20150509045822) do
     t.integer  "course_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "lies", force: :cascade do |t|
+    t.boolean  "in_cup"
+    t.boolean  "on_apron"
+    t.boolean  "on_green"
+    t.boolean  "in_rough"
+    t.boolean  "on_beach"
+    t.boolean  "in_drink"
+    t.boolean  "out_of_bounds"
+    t.boolean  "on_downslope"
+    t.boolean  "on_upslope"
+    t.boolean  "on_side_hill_right"
+    t.boolean  "on_side_hill_left"
+    t.boolean  "obstructed_by_trees"
+    t.boolean  "on_fairway"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.boolean  "tee_up"
+    t.boolean  "tee_down"
+    t.boolean  "tee_middle"
+    t.boolean  "Off_the_turf"
+    t.boolean  "elevated_tee"
   end
 
   create_table "played_holes", force: :cascade do |t|
@@ -68,36 +91,21 @@ ActiveRecord::Schema.define(version: 20150509045822) do
     t.boolean  "was_fade"
     t.boolean  "was_slice"
     t.boolean  "was_worm_burner"
-    t.boolean  "was_frenchie"
+    t.boolean  "was_goldie_bounce"
     t.boolean  "was_lob"
     t.boolean  "was_stoney"
     t.boolean  "was_pop_up"
     t.boolean  "was_shank"
     t.boolean  "was_skull"
     t.boolean  "was_tree_shot"
-    t.boolean  "on_apron"
-    t.boolean  "on_green"
-    t.boolean  "in_jail"
-    t.boolean  "in_jungle"
-    t.boolean  "on_beach"
-    t.boolean  "in_drink"
-    t.boolean  "out_of_bounds"
-    t.boolean  "in_cup"
-    t.boolean  "on_side_hill"
-    t.boolean  "obstructed_by_trees"
-    t.boolean  "in_rough"
-    t.boolean  "on_fairway"
-    t.boolean  "chunked"
-    t.boolean  "topped"
     t.boolean  "over_club"
     t.boolean  "under_club"
     t.boolean  "high_trajectory"
     t.boolean  "low_trajectory"
-    t.boolean  "take_mulligan"
-    t.boolean  "take_drop"
-    t.boolean  "take_gimme"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.boolean  "chunked"
+    t.boolean  "topped"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
   create_table "rounds", force: :cascade do |t|
@@ -109,6 +117,14 @@ ActiveRecord::Schema.define(version: 20150509045822) do
     t.integer  "opponent_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "shot_actions", force: :cascade do |t|
+    t.boolean  "take_mulligan"
+    t.boolean  "take_drop"
+    t.boolean  "take_gimme"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "shots", force: :cascade do |t|
