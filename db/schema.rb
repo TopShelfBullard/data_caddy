@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150511054710) do
+ActiveRecord::Schema.define(version: 20150513010452) do
 
   create_table "clubs", force: :cascade do |t|
     t.string   "name"
@@ -21,8 +21,9 @@ ActiveRecord::Schema.define(version: 20150511054710) do
 
   create_table "courses", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "course_player_id"
   end
 
   create_table "holes", force: :cascade do |t|
@@ -53,9 +54,9 @@ ActiveRecord::Schema.define(version: 20150511054710) do
     t.boolean  "tee_up"
     t.boolean  "tee_down"
     t.boolean  "tee_middle"
-    t.boolean  "Off_the_turf"
     t.boolean  "elevated_tee"
     t.integer  "shot_id"
+    t.boolean  "off_the_turf"
   end
 
   create_table "played_holes", force: :cascade do |t|
@@ -131,13 +132,11 @@ ActiveRecord::Schema.define(version: 20150511054710) do
 
   create_table "shots", force: :cascade do |t|
     t.integer  "round_id"
-    t.integer  "hole_id"
     t.integer  "club_id"
     t.integer  "number"
-    t.integer  "mulligan"
-    t.boolean  "squib"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "played_hole_id"
   end
 
 end
