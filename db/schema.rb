@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150513050218) do
+ActiveRecord::Schema.define(version: 20150514051619) do
 
   create_table "clubs", force: :cascade do |t|
     t.string   "name"
@@ -47,7 +47,6 @@ ActiveRecord::Schema.define(version: 20150513050218) do
     t.integer  "course_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
-    t.integer  "player_hole_id"
     t.integer  "eagle_percentage"
     t.integer  "birdy_percentage"
     t.integer  "par_percentage"
@@ -85,6 +84,9 @@ ActiveRecord::Schema.define(version: 20150513050218) do
     t.integer  "player_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "lie_id"
+    t.integer  "club_id"
+    t.integer  "result_id"
   end
 
   create_table "player_holes", force: :cascade do |t|
