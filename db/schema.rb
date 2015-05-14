@@ -11,12 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150513010452) do
+ActiveRecord::Schema.define(version: 20150513050218) do
 
   create_table "clubs", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "course_players", force: :cascade do |t|
+    t.integer  "player_id"
+    t.integer  "course_id"
+    t.integer  "highest_score"
+    t.integer  "lowest_score"
+    t.integer  "average_score"
+    t.integer  "best_hole_id"
+    t.integer  "worst_hole_id"
+    t.integer  "dream_round"
+    t.integer  "nightmare_round"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "courses", force: :cascade do |t|
@@ -31,8 +45,14 @@ ActiveRecord::Schema.define(version: 20150513010452) do
     t.integer  "par"
     t.integer  "distance"
     t.integer  "course_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.integer  "player_hole_id"
+    t.integer  "eagle_percentage"
+    t.integer  "birdy_percentage"
+    t.integer  "par_percentage"
+    t.float    "bogie_percentage"
+    t.integer  "failure_percentage"
   end
 
   create_table "lies", force: :cascade do |t|
@@ -65,6 +85,25 @@ ActiveRecord::Schema.define(version: 20150513010452) do
     t.integer  "player_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "player_holes", force: :cascade do |t|
+    t.integer  "player_id"
+    t.integer  "hole_id"
+    t.integer  "best_score"
+    t.integer  "worst_score"
+    t.integer  "most_puts"
+    t.integer  "least_putts"
+    t.integer  "average_putts"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "player_opponents", force: :cascade do |t|
+    t.integer  "player_id"
+    t.integer  "opponent_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "players", force: :cascade do |t|
