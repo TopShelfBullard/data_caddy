@@ -1,10 +1,18 @@
 Rails.application.routes.draw do
 
-
-
   resources :rounds do
     resources :courses
-    resources :holes
+    resources :played_holes
+  end
+
+  resources :played_holes do
+    resources :shots
+  end
+
+  resources :shots do
+    resources :lies
+    resources :clubs
+    resources :results
   end
 
   devise_for :players
