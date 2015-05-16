@@ -35,6 +35,17 @@ hole_7 = Hole.create!(number: 7, par: 4, distance: 391, course_id: timber_terrac
 hole_8 = Hole.create!(number: 8, par: 3, distance: 158, course_id: timber_terrace.id)
 hole_9 = Hole.create!(number: 9, par: 5, distance: 510, course_id: timber_terrace.id)
 
+bogus_course = Course.create!(name: "Bogus Course")
+
+Hole.create!(number: 1, par: 5, distance: 453, course_id: bogus_course.id)
+Hole.create!(number: 2, par: 4, distance: 347, course_id: bogus_course.id)
+Hole.create!(number: 3, par: 4, distance: 236, course_id: bogus_course.id)
+Hole.create!(number: 4, par: 3, distance: 162, course_id: bogus_course.id)
+Hole.create!(number: 5, par: 4, distance: 340, course_id: bogus_course.id)
+Hole.create!(number: 6, par: 3, distance: 147, course_id: bogus_course.id)
+Hole.create!(number: 7, par: 4, distance: 391, course_id: bogus_course.id)
+Hole.create!(number: 8, par: 3, distance: 158, course_id: bogus_course.id)
+Hole.create!(number: 9, par: 5, distance: 510, course_id: bogus_course.id)
 
 round = Round.create!(course_id: timber_terrace.id, player_id: jeffery.id, date: "4/26/2015", score: 52, finished: true, opponent_id: walter.id)
 
