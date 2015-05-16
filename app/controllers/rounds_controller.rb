@@ -1,7 +1,6 @@
 class RoundsController < ApplicationController
   def index
     @rounds = Round.all
-
   end
 
   def show
@@ -10,11 +9,13 @@ class RoundsController < ApplicationController
 
   def new
     @round = Round.new
+    @course_options = Course.all.map{|course| ["#{course.name}", course.id]}
   end
 
   def edit
     @round = Round.find(params[:id])
     @hole_options = @round.holes.map{|hole| ["#{hole.number}. #{hole.par} - #{hole.distance} yards", hole.id]}
+    @course_options = Course.all.map{|course| ["#{course.name}", course.id]}
   end
 
   def create
@@ -45,7 +46,7 @@ class RoundsController < ApplicationController
   end
 
   private
-  def book_params
-    params.require(:round).permit(:date, :score)
+  def round_params
+    params.require(:round).permit(:date)
   end
 end
