@@ -8,7 +8,7 @@ class RoundsController < ApplicationController
   end
 
   def new
-    @round = Round.new
+    @round = Round.new()
     @course_options = Course.all.map{|course| ["#{course.name}", course.id]}
   end
 
@@ -20,7 +20,7 @@ class RoundsController < ApplicationController
 
   def create
     @round = Round.new(round_params)
-
+    @round.player = current_player
     if @round.save
       redirect_to @round
     else
@@ -47,6 +47,6 @@ class RoundsController < ApplicationController
 
   private
   def round_params
-    params.require(:round).permit(:date)
+    params.require(:round).permit(:date, :course_id, :player_id)
   end
 end

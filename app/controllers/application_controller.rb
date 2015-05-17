@@ -10,4 +10,12 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << :name
   end
+
+  # def dvise_parameter_sanitizer
+  #   if resourse_class ==Player
+  #     Player::ParameterSanitizer.new(Player, :player, params)
+  #   else
+  #     super
+  #   end
+  # end
 end
