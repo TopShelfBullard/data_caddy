@@ -21,6 +21,14 @@ class RoundsController < ApplicationController
   def create
     @round = Round.new(round_params)
     @round.player = current_player
+    @round.course.holes.each do |hole|
+      played_hole = PlayedHole.new()
+      played_hole.hole = hole
+      played_hole.player = @round.player
+      played_hole.round = @round
+      played_hole.save
+    end
+
     if @round.save
       redirect_to @round
     else

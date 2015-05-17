@@ -2,3 +2,6 @@
 <p>PLAYER: <%= @round.player.name %> - <%= @round.player.email %></p>
 <p>COURSE: <%= @round.course.name %></p>
 <p>DATE: <%= @round.date %></p>
+<% @round.played_holes.each do |played_hole| %>
+    <blockquote><%= played_hole.hole.number %> - <%= played_hole.hole.par %></blockquote>
+<% end %>
