@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150517034432) do
+ActiveRecord::Schema.define(version: 20150518040910) do
 
   create_table "clubs", force: :cascade do |t|
     t.string   "name"
@@ -122,7 +122,26 @@ ActiveRecord::Schema.define(version: 20150517034432) do
   add_index "players", ["email"], name: "index_players_on_email", unique: true
   add_index "players", ["reset_password_token"], name: "index_players_on_reset_password_token", unique: true
 
-  create_table "results", force: :cascade do |t|
+  create_table "rounds", force: :cascade do |t|
+    t.integer  "course_id"
+    t.integer  "player_id"
+    t.date     "date"
+    t.integer  "score"
+    t.boolean  "finished"
+    t.integer  "opponent_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "shot_actions", force: :cascade do |t|
+    t.boolean  "take_mulligan"
+    t.boolean  "take_drop"
+    t.boolean  "take_gimme"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "shot_results", force: :cascade do |t|
     t.boolean  "was_hook"
     t.boolean  "was_draw"
     t.boolean  "was_pull"
@@ -147,25 +166,6 @@ ActiveRecord::Schema.define(version: 20150517034432) do
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
     t.integer  "shot_id"
-  end
-
-  create_table "rounds", force: :cascade do |t|
-    t.integer  "course_id"
-    t.integer  "player_id"
-    t.date     "date"
-    t.integer  "score"
-    t.boolean  "finished"
-    t.integer  "opponent_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  create_table "shot_actions", force: :cascade do |t|
-    t.boolean  "take_mulligan"
-    t.boolean  "take_drop"
-    t.boolean  "take_gimme"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
   end
 
   create_table "shots", force: :cascade do |t|

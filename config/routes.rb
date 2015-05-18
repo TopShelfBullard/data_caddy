@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :shots do
     resources :lies
     resources :clubs
-    resources :results
+    resources :shot_results
   end
 
   devise_for :players

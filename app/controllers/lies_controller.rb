@@ -15,8 +15,13 @@ class LiesController < ApplicationController
   end
 
   def update
+    @lie = Lie.find(params[:id])
+    @lie.save()
   end
 
   def destroy
   end
+
+  private
+
 end
