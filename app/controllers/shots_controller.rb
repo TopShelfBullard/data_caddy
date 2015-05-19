@@ -8,29 +8,18 @@ class ShotsController < ApplicationController
     else
       @shot.number = @played_hole.shots.length + 1
     end
-
-    @club_options = Club.all.map{|club| ["#{club.name}", club.id]}
-
-    @lie = Lie.new()
-    @shot_result = Result.new()
-    @shot.lie = @lie
+    
+    @shot.save()
   end
 
   def edit
+    @shot = Shot.find(params[:id])
+    @club_options = Club.all.map{|club| ["#{club.name}", club.id]}
   end
 
-  def create
-    @shot = Shot.new()
-
-    @shot.save
-
-    if !@shot.lie
-      # Do lie stuffs
-    end
-
-    if !@shot.shot_result
-      # Do result stuffs
-    end
+  def update
+    @shot = Shot.find(params[:id])
+    @shot.save()
   end
 
   private

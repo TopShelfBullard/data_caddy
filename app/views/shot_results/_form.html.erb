@@ -1,4 +1,4 @@
-<%= form_for([@shot, @shot.lie]) do |f| %>
+<%= form_for([@shot, @shot.shot_result]) do |f| %>
     <div class="field">
       <%= f.label :was_hook %>
       <%= f.check_box :was_hook %>
@@ -13,7 +13,7 @@
       <%= f.label :was_pull %>
       <%= f.check_box :was_pull %>
     </div>
-    
+
     <div class="field">
       <%= f.label :was_pure %>
       <%= f.check_box :was_pure %>

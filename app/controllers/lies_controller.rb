@@ -1,27 +1,25 @@
 class LiesController < ApplicationController
-  def index
-  end
-
-  def show
-  end
-
   def new
-  end
-
-  def edit
+    @shot = Shot.find(params[:shot_id])
+    @lie = Lie.new()
+    @lie.shot = @shot
+    @shot.lie = @lie
   end
 
   def create
-  end
+    @lie = Lie.new(lie_params)
 
-  def update
-    @lie = Lie.find(params[:id])
-    @lie.save()
-  end
-
-  def destroy
+    if @lie.save
+      redirect_to edit_shot_path(@shot)
+    else
+      render 'new'
+    end
   end
 
   private
-
+  def lie_params
+    params.require(:lie).permit(:in_cup, :on_apron, :on_green, :in_rough, :on_beach, :in_drink, :out_of_bounds, :on_downslope,
+                                :on_upslope, :on_side_hill_right, :on_side_hill_left, :obstructed_by_trees, :on_fairway, :tee_up,
+                                :tee_down, :tee_middle, :elevated_tee, :off_the_turf)
+  end
 end

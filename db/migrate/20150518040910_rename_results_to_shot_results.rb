@@ -1,5 +1,5 @@
 class RenameResultsToShotResults < ActiveRecord::Migration
   def change
-    rename_table :shot_results, :shot_results
+    rename_table :results, :shot_results
   end
 end

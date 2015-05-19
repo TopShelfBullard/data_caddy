@@ -1,3 +1,5 @@
 <h1>Shots#edit</h1>
-<p>PLAYER HOLE: <%= @shot.player_hole_id %></p>
-<p>SHOT NUMBER: <%= @shot.number %></p>
+
+<% if !@shot.shot_results %>
+    render form
+<% end %>
