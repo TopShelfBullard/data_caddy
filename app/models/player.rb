@@ -6,6 +6,4 @@ class Player < ActiveRecord::Base
 
   has_many :rounds
   has_many :played_holes
-  has_many :course_players
-  has_many :player_holes
 end

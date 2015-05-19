@@ -6,7 +6,6 @@ class CreateRounds < ActiveRecord::Migration
       t.date :date
       t.integer :score
       t.boolean :finished
-      t.integer :opponent_id
 
       t.timestamps null: false
     end

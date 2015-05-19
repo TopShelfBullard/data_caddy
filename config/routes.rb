@@ -7,21 +7,13 @@ Rails.application.routes.draw do
 
   resources :played_holes do
     resources :shots
-    resources :lies
-    resources :shot_results
   end
 
   resources :shots do
-    resources :lies
     resources :clubs
-    resources :shot_results
   end
 
   resources :lies do
-    resources :shots
-  end
-
-  resources :shot_results do
     resources :shots
   end
 
