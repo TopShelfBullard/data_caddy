@@ -75,7 +75,6 @@ ActiveRecord::Schema.define(version: 20150501054732) do
     t.integer  "club_id"
     t.integer  "number"
     t.boolean  "tee_up"
-    t.boolean  "boolean"
     t.boolean  "tee_down"
     t.boolean  "tee_middle"
     t.boolean  "off_the_turf"
@@ -110,7 +109,6 @@ ActiveRecord::Schema.define(version: 20150501054732) do
     t.boolean  "on_side_hill_left"
     t.boolean  "obstructed_by_trees"
     t.boolean  "on_fairway"
-    t.boolean  "string"
     t.boolean  "take_mulligan"
     t.boolean  "take_drop"
     t.datetime "created_at",          null: false
