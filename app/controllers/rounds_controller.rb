@@ -55,6 +55,6 @@ class RoundsController < ApplicationController
 
   private
   def round_params
-    params.require(:round).permit(:date, :course_id, :player_id)
+    params.require(:round).permit(:date, :course_id, :player_id, :score, :finished)
   end
 end
