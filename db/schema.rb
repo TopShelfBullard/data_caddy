@@ -71,7 +71,6 @@ ActiveRecord::Schema.define(version: 20150501054732) do
 
   create_table "shots", force: :cascade do |t|
     t.integer  "round_id"
-    t.integer  "played_hole_id"
     t.integer  "club_id"
     t.integer  "number"
     t.boolean  "tee_up"
@@ -111,8 +110,11 @@ ActiveRecord::Schema.define(version: 20150501054732) do
     t.boolean  "on_fairway"
     t.boolean  "take_mulligan"
     t.boolean  "take_drop"
+    t.integer  "played_hole_id"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
   end
+
+  add_index "shots", ["played_hole_id"], name: "index_shots_on_played_hole_id"
 
 end

@@ -1,10 +1,10 @@
 <h1>Hole <%= @played_hole.hole.number %></h1>
 <blockquote>Par <%= @played_hole.hole.par %> - <%= @played_hole.hole.distance %> yards</blockquote>
 
-<% if !@played_hole.shots.nil? && !@played_hole.shots.empty? %>
+<% if @played_hole.shots.any? %>
     <% @played_hole.shots.each do |shot| %>
-        <p><%= link_to "#{shot.number}. #{shot.club}", edit_shot_path(shot) %></p>
+        <p><%= link_to "#{shot.number}. Club: #{shot.club.name}", edit_played_hole_shot_path(@played_hole, shot) %></p>
     <% end %>
 <% end %>
 
-<%= link_to "next shot", new_shot_path(played_hole_id: @played_hole.id) %>
+<%= link_to "next shot", new_played_hole_shot_path(@played_hole) %>

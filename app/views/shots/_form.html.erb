@@ -1,4 +1,4 @@
-<%= form_for @shot do |f| %>
+<%= form_for([@played_hole, @shot]) do |f| %>
 
     <% if @shot.errors.any? %>
         <div id="error_explanation">
@@ -14,9 +14,54 @@
         </div>
     <% end %>
 
-    <p>
-      <%= f.label :club %><%= f.select(:club_id, options_for_select(@club_options)) %>
-    </p>
+    <% if !@ly_entered || @all_entered %>
+        <div class="field"><%= f.label :tee_up %><%= f.check_box :tee_up %></div>
+        <div class="field"><%= f.label :tee_middle %><%= f.check_box :tee_middle %></div>
+        <div class="field"><%= f.label :off_the_turf %><%= f.check_box :off_the_turf %></div>
+        <div class="field"><%= f.label :elevated_tee %><%= f.check_box :elevated_tee %></div>
+        <div class="field"><%= f.label :in_cup %><%= f.check_box :in_cup %></div>
+        <div class="field"><%= f.label :on_apron %><%= f.check_box :on_apron %></div>
+        <div class="field"><%= f.label :on_green %><%= f.check_box :on_green %></div>
+        <div class="field"><%= f.label :in_rough %><%= f.check_box :in_rough %></div>
+        <div class="field"><%= f.label :on_beach %><%= f.check_box :on_beach %></div>
+        <div class="field"><%= f.label :in_drink %><%= f.check_box :in_drink %></div>
+        <div class="field"><%= f.label :out_of_bounds %><%= f.check_box :out_of_bounds %></div>
+        <div class="field"><%= f.label :on_downslope %><%= f.check_box :on_downslope %></div>
+        <div class="field"><%= f.label :on_upslope %><%= f.check_box :on_upslope %></div>
+        <div class="field"><%= f.label :on_upslope %><%= f.check_box :on_upslope %></div>
+        <div class="field"><%= f.label :on_side_hill_right %><%= f.check_box :on_side_hill_right %></div>
+        <div class="field"><%= f.label :on_side_hill_left %><%= f.check_box :on_side_hill_left %></div>
+        <div class="field"><%= f.label :obstructed_by_trees %><%= f.check_box :obstructed_by_trees %></div>
+        <div class="field"><%= f.label :on_fairway %><%= f.check_box :on_fairway %></div>
+    <% end %>
+
+    <% if (@ly_entered && !@shot_entered) || @all_entered %>
+        <div class="field">
+         <%= f.label :club %><br><%= f.select(:club_id, options_for_select(@club_options)) %>
+        </div>
+    <% end %>
+
+    <% if (@ly_entered && @shot_entered)  || @all_entered%>
+        <div class="field"><%= f.label :was_hook %><%= f.check_box :was_hook %></div>
+        <div class="field"><%= f.label :was_draw %><%= f.check_box :was_draw %></div>
+        <div class="field"><%= f.label :was_pull %><%= f.check_box :was_pull %></div>
+        <div class="field"><%= f.label :was_pure %><%= f.check_box :was_pure %></div>
+        <div class="field"><%= f.label :was_push %><%= f.check_box :was_push %></div>
+        <div class="field"><%= f.label :was_fade %><%= f.check_box :was_fade %></div>
+        <div class="field"><%= f.label :was_slice %><%= f.check_box :was_slice %></div>
+        <div class="field"><%= f.label :was_lob %><%= f.check_box :was_lob %></div>
+        <div class="field"><%= f.label :was_pop_up %><%= f.check_box :was_pop_up %></div>
+        <div class="field"><%= f.label :was_shank %><%= f.check_box :was_shank %></div>
+        <div class="field"><%= f.label :was_skull %><%= f.check_box :was_skull %></div>
+        <div class="field"><%= f.label :over_club %><%= f.check_box :over_club %></div>
+        <div class="field"><%= f.label :under_club %><%= f.check_box :under_club %></div>
+        <div class="field"><%= f.label :high_trajectory %><%= f.check_box :high_trajectory %></div>
+        <div class="field"><%= f.label :low_trajectory %><%= f.check_box :low_trajectory %></div>
+        <div class="field"><%= f.label :chunked %><%= f.check_box :chunked %></div>
+        <div class="field"><%= f.label :topped %><%= f.check_box :topped %></div>
+        <div class="field"><%= f.label :take_mulligan %><%= f.check_box :take_mulligan %></div>
+        <div class="field"><%= f.label :take_drop %><%= f.check_box :take_drop %></div>
+    <% end %>
 
     <p>
       <%= f.submit %>

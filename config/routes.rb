@@ -13,10 +13,6 @@ Rails.application.routes.draw do
     resources :clubs
   end
 
-  resources :lies do
-    resources :shots
-  end
-
   devise_for :players
 
   root 'rounds#index'
