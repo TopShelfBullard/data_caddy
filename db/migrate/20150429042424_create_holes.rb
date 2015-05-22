@@ -4,7 +4,7 @@ class CreateHoles < ActiveRecord::Migration
       t.integer :number
       t.integer :par
       t.integer :distance
-      t.integer :course_id
+      t.references :course, index: true
 
       t.timestamps null: false
     end

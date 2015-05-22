@@ -1,8 +1,6 @@
 class CreateShots < ActiveRecord::Migration
   def change
     create_table :shots do |t|
-      t.integer :round_id
-      t.integer :club_id
       t.integer :number
       t.boolean :tee_up
       t.boolean :tee_down
@@ -41,6 +39,8 @@ class CreateShots < ActiveRecord::Migration
       t.boolean :on_fairway
       t.boolean :take_mulligan
       t.boolean :take_drop
+      t.references :round, index: true
+      t.references :club, index: true
       t.references :played_hole, index: true
 
       t.timestamps null: false

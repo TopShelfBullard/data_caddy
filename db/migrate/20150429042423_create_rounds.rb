@@ -1,11 +1,11 @@
 class CreateRounds < ActiveRecord::Migration
   def change
     create_table :rounds do |t|
-      t.integer :course_id
-      t.integer :player_id
       t.date :date
       t.integer :score
       t.boolean :finished
+      t.references :course, index: true
+      t.references :player, index: true
 
       t.timestamps null: false
     end

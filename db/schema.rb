@@ -34,6 +34,8 @@ ActiveRecord::Schema.define(version: 20150501054732) do
     t.datetime "updated_at", null: false
   end
 
+  add_index "holes", ["course_id"], name: "index_holes_on_course_id"
+
   create_table "played_holes", force: :cascade do |t|
     t.integer  "hole_id"
     t.integer  "round_id"
@@ -41,6 +43,10 @@ ActiveRecord::Schema.define(version: 20150501054732) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "played_holes", ["hole_id"], name: "index_played_holes_on_hole_id"
+  add_index "played_holes", ["player_id"], name: "index_played_holes_on_player_id"
+  add_index "played_holes", ["round_id"], name: "index_played_holes_on_round_id"
 
   create_table "players", force: :cascade do |t|
     t.string   "name"
@@ -60,18 +66,19 @@ ActiveRecord::Schema.define(version: 20150501054732) do
   add_index "players", ["reset_password_token"], name: "index_players_on_reset_password_token", unique: true
 
   create_table "rounds", force: :cascade do |t|
-    t.integer  "course_id"
-    t.integer  "player_id"
     t.date     "date"
     t.integer  "score"
     t.boolean  "finished"
+    t.integer  "course_id"
+    t.integer  "player_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_index "rounds", ["course_id"], name: "index_rounds_on_course_id"
+  add_index "rounds", ["player_id"], name: "index_rounds_on_player_id"
+
   create_table "shots", force: :cascade do |t|
-    t.integer  "round_id"
-    t.integer  "club_id"
     t.integer  "number"
     t.boolean  "tee_up"
     t.boolean  "tee_down"
@@ -110,11 +117,15 @@ ActiveRecord::Schema.define(version: 20150501054732) do
     t.boolean  "on_fairway"
     t.boolean  "take_mulligan"
     t.boolean  "take_drop"
+    t.integer  "round_id"
+    t.integer  "club_id"
     t.integer  "played_hole_id"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
   end
 
+  add_index "shots", ["club_id"], name: "index_shots_on_club_id"
   add_index "shots", ["played_hole_id"], name: "index_shots_on_played_hole_id"
+  add_index "shots", ["round_id"], name: "index_shots_on_round_id"
 
 end
