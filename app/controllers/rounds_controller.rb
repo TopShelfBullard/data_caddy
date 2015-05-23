@@ -5,6 +5,7 @@ class RoundsController < ApplicationController
 
   def show
     @round = Round.find(params[:id])
+    @scorecard = set_scorecard_hash(@round)
   end
 
   def new
@@ -57,4 +58,22 @@ class RoundsController < ApplicationController
   def round_params
     params.require(:round).permit(:date, :course_id, :player_id, :score, :finished)
   end
+
+  def set_scorecard_hash(round)
+    round.played_holes.map {|played_hole|
+      score = 0
+      mulligans = 0
+      putts = 0
+
+      played_hole.shots.each do |shot|
+        score = shot.take_mulligan ? score : score + 1
+        mulligans = shot.take_mulligan ? mulligans : mulligans + 1
+        putts = shot.club.name == "putter" ? putts + 1 : putts
+      end
+
+      { played_hole: played_hole, number: played_hole.hole.number, par: played_hole.hole.par, distance: played_hole.hole.distance,
+        score: score, mulligans: mulligans, putts: putts, shots: played_hole.shots }
+    }
+  end
+
 end

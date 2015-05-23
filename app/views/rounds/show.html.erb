@@ -1,10 +1,2 @@
-<h1>Round:</h1>
-<p>PLAYER: <%= @round.player.name %> - <%= @round.player.email %></p>
-<p>COURSE: <%= @round.course.name %></p>
-<p>DATE: <%= @round.date %></p>
-
-<% @round.played_holes.each do |played_hole| %>
-    <blockquote>
-      <%= link_to "#{played_hole.hole.number} - #{played_hole.hole.par}", played_hole %>
-    </blockquote>
-<% end %>
+<h1>Scorecard for <%= @round.course.name %> on <%= @round.date %></h1>
+<%= render "scorecard" %>

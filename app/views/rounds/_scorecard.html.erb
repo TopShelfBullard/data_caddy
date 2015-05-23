@@ -1,0 +1,13 @@
+<section class="scorecard">
+
+    <% @scorecard.each do |hole| %>
+        <div class="played_hole">
+            <p><%= hole[:number] %>. PAR: <%= hole[:par]%> - DISTANCE: <%= hole[:distance]%></p>
+            <blockquote>
+              SCORE: <%= hole[:score] %> - MULLIGANS: <%= hole[:mulligans] %> - PUTTS: <%= hole[:putts] %>
+            </blockquote>
+        </div>
+        <hr>
+    <% end %>
+
+</section>
