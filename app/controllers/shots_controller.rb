@@ -37,9 +37,6 @@ class ShotsController < ApplicationController
     end
   end
 
-  def destroy
-  end
-
   private
   def set_shot
     @shot = @played_hole.shots.find(params[:id])
