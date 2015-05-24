@@ -6,5 +6,5 @@
         <p><%= link_to "#{shot.number}. Club: #{shot.club.name}", edit_played_hole_shot_path(@played_hole, shot) %></p>
     <% end %>
 <% end %>
-
+<%= link_to "back", @played_hole.round %>
 <%= link_to "next shot", new_played_hole_shot_path(@played_hole) %>

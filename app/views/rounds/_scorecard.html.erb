@@ -6,6 +6,8 @@
             <blockquote>
               SCORE: <%= hole[:score] %> - MULLIGANS: <%= hole[:mulligans] %> - PUTTS: <%= hole[:putts] %>
             </blockquote>
+
+            <%= link_to 'View Hole', hole[:played_hole] %>
         </div>
         <hr>
     <% end %>
