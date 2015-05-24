@@ -55,10 +55,9 @@ class ShotsController < ApplicationController
   end
 
   def ly_is_entered(shot)
-    shot.tee_up == true || shot.tee_down == true || shot.tee_middle == true || shot.off_the_turf == true || shot.elevated_tee == true ||
-        shot.in_cup == true || shot.on_apron == true || shot.on_green == true || shot.in_rough == true || shot.on_beach == true ||
-        shot.in_drink == true || shot.out_of_bounds == true || shot.on_downslope == true || shot.on_upslope == true ||shot.on_side_hill_right == true ||
-        shot.on_side_hill_left == true || shot.obstructed_by_trees == true || shot.on_fairway == true
+    shot.tee_up || shot.tee_down || shot.tee_middle || shot.off_the_turf || shot.elevated_tee || shot.in_cup || shot.on_apron ||
+        shot.on_green || shot.in_rough || shot.on_beach  || shot.in_drink || shot.out_of_bounds || shot.on_downslope ||
+        shot.on_upslope ||shot.on_side_hill_right || sshot.on_side_hill_left || shot.obstructed_by_trees || shot.on_fairway
   end
 
   def shot_is_entered(shot)
@@ -66,9 +65,8 @@ class ShotsController < ApplicationController
   end
 
   def result_is_entered(shot)
-    shot.was_hook == true || shot.was_draw == true || shot.was_pull == true || shot.was_pure == true || shot.was_push == true || shot.was_fade == true ||
-        shot.was_slice == true || shot.was_lob == true || shot.was_pop_up == true || shot.was_shank == true || shot.was_skull == true || shot.over_club == true ||
-        shot.under_club == true || shot.high_trajectory == true || shot.low_trajectory == true || shot.chunked == true || shot.topped == true ||
-        shot.take_mulligan == true || shot.take_drop == true
+    shot.was_hook || shot.was_draw || shot.was_pull || shot.was_pure || shot.was_push || shot.was_fade || shot.was_slice ||
+        shot.was_lob || shot.was_pop_up || shot.was_shank || shot.was_skull || shot.over_club || shot.under_club ||
+        shot.high_trajectory || shot.low_trajectory || shot.chunked || shot.topped ||shot.take_mulligan || shot.take_drop
   end
 end
