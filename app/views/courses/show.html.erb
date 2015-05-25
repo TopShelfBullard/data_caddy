@@ -1,2 +1,9 @@
 <h1>Courses#show</h1>
-<p>Find me in app/views/courses/show.html.erb</p>
+<p<%= @course.name %></p>
+<% if @course.holes.any? %>
+    <% @course.holes.each do |hole| %>
+        <blockquote><%= hole.number %> - PAR: <%= hole.par %> - <%= hole.distance %> yrds</blockquote>
+    <% end %>
+<% end %>
+
+<%= link_to "Add Hole", new_course_hole_path(@course) %>

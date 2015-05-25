@@ -1,0 +1,30 @@
+<%= form_for([@course, @hole]) do |f| %>
+    <% if @hole.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@hole.errors.count, "error") %> prohibited this hole from being saved:</h2>
+
+          <ul>
+            <% @hole.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+
+    <div class="field">
+      <%= f.label :number %><br>
+      <%= f.number_field :number %>
+    </div>
+    <div class="field">
+      <%= f.label :par %><br>
+      <%= f.text_field :par %>
+    </div>
+    <div class="field">
+      <%= f.label :distance %><br>
+      <%= f.number_field :distance %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+<% end %>
