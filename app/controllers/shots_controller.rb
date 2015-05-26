@@ -48,7 +48,7 @@ class ShotsController < ApplicationController
 
   def shot_params
     params.require(:shot).permit( :number, :tee_up, :tee_down, :tee_middle, :off_the_turf, :elevated_tee, :punch, :trick,
-      :full, :quarter, :half, :three_quarters, :hook, :draw, :pull, :pure, :push, :fade, :slice, :left, :right, :center,
+      :full, :quarter, :half, :three_quarters, :hook, :draw, :pull, :pure, :push, :fade, :shot_slice, :left, :right, :center,
       :lob, :pop_up, :shank, :skull, :over_club, :under_club, :high, :low, :chunk, :top, :soft, :hard, :cup, :apron, :green,
       :rough, :beach, :drink, :out_of_bounds, :downslope, :upslope, :side_hill_right, :side_hill_left, :obstructed, :fairway,
       :mulligan, :drop, :practice, :round_id, :club_id, :played_hole_id )
@@ -65,7 +65,7 @@ class ShotsController < ApplicationController
   end
 
   def result_is_entered(shot)
-    shot.hook || shot.draw || shot.pull || shot.pure || shot.push || shot.fade || shot.slice || shot.left || shot.right ||
+    shot.hook || shot.draw || shot.pull || shot.pure || shot.push || shot.fade || shot.shot_slice || shot.left || shot.right ||
       shot.center || shot.lob || shot.pop_up || shot.shank || shot.skull || shot.over_club || shot.under_club || shot.high ||
       shot.low || shot.chunk || shot.top ||shot.soft || shot.hard || shot.mulligan || shot.drop || shot.practice
   end

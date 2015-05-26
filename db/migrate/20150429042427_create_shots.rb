@@ -21,7 +21,7 @@ class CreateShots < ActiveRecord::Migration
       t.boolean :pure
       t.boolean :push
       t.boolean :fade
-      t.boolean :slice
+      t.boolean :shot_slice
       t.boolean :left
       t.boolean :right
       t.boolean :center
