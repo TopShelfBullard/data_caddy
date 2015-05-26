@@ -47,26 +47,26 @@ class ShotsController < ApplicationController
   end
 
   def shot_params
-    params.require(:shot).permit(:round_id, :club_id, :number, :tee_up, :tee_down, :tee_middle,
-      :off_the_turf, :elevated_tee, :in_cup, :on_apron, :on_green, :in_rough, :on_beach, :in_drink, :out_of_bounds,
-      :on_downslope, :on_upslope, :on_side_hill_right, :on_side_hill_left, :obstructed_by_trees, :on_fairway, :was_hook,
-      :was_draw, :was_pull, :was_pure, :was_push, :was_fade, :was_slice, :was_lob, :was_pop_up, :was_shank, :was_skull,
-      :over_club, :under_club, :high_trajectory, :low_trajectory, :chunked, :topped, :take_mulligan, :take_drop, :played_hole_id)
+    params.require(:shot).permit( :number, :tee_up, :tee_down, :tee_middle, :off_the_turf, :elevated_tee, :punch, :trick,
+      :full, :quarter, :half, :three_quarters, :hook, :draw, :pull, :pure, :push, :fade, :slice, :left, :right, :center,
+      :lob, :pop_up, :shank, :skull, :over_club, :under_club, :high, :low, :chunk, :top, :soft, :hard, :cup, :apron, :green,
+      :rough, :beach, :drink, :out_of_bounds, :downslope, :upslope, :side_hill_right, :side_hill_left, :obstructed, :fairway,
+      :mulligan, :drop, :practice, :round_id, :club_id, :played_hole_id )
   end
 
   def ly_is_entered(shot)
-    shot.tee_up || shot.tee_down || shot.tee_middle || shot.off_the_turf || shot.elevated_tee || shot.in_cup || shot.on_apron ||
-        shot.on_green || shot.in_rough || shot.on_beach  || shot.in_drink || shot.out_of_bounds || shot.on_downslope ||
-        shot.on_upslope ||shot.on_side_hill_right || sshot.on_side_hill_left || shot.obstructed_by_trees || shot.on_fairway
+    shot.tee_up || shot.tee_down || shot.tee_middle || shot.off_the_turf || shot.elevated_tee || shot.cup || shot.apron ||
+     shot.green || shot.rough || shot.beach  || shot.drink || shot.out_of_bounds || shot.downslope ||
+     shot.upslope ||shot.side_hill_right || sshot.side_hill_left || shot.obstructed || shot.fairway
   end
 
   def shot_is_entered(shot)
-    shot.club_id
+    shot.club_id || shot.punch || shot.trick || shot.full || shot.quarter || shot.half || shot.three_quarters
   end
 
   def result_is_entered(shot)
-    shot.was_hook || shot.was_draw || shot.was_pull || shot.was_pure || shot.was_push || shot.was_fade || shot.was_slice ||
-        shot.was_lob || shot.was_pop_up || shot.was_shank || shot.was_skull || shot.over_club || shot.under_club ||
-        shot.high_trajectory || shot.low_trajectory || shot.chunked || shot.topped ||shot.take_mulligan || shot.take_drop
+    shot.hook || shot.draw || shot.pull || shot.pure || shot.push || shot.fade || shot.slice || shot.left || shot.right ||
+      shot.center || shot.lob || shot.pop_up || shot.shank || shot.skull || shot.over_club || shot.under_club || shot.high ||
+      shot.low || shot.chunk || shot.top ||shot.soft || shot.hard || shot.mulligan || shot.drop || shot.practice
   end
 end

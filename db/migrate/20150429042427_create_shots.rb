@@ -7,38 +7,55 @@ class CreateShots < ActiveRecord::Migration
       t.boolean :tee_middle
       t.boolean :off_the_turf
       t.boolean :elevated_tee
-      t.boolean :was_hook
-      t.boolean :was_draw
-      t.boolean :was_pull
-      t.boolean :was_pure
-      t.boolean :was_push
-      t.boolean :was_fade
-      t.boolean :was_slice
-      t.boolean :was_lob
-      t.boolean :was_pop_up
-      t.boolean :was_shank
-      t.boolean :was_skull
+
+      t.boolean :punch
+      t.boolean :trick
+      t.boolean :full
+      t.boolean :quarter
+      t.boolean :half
+      t.boolean :three_quarters
+
+      t.boolean :hook
+      t.boolean :draw
+      t.boolean :pull
+      t.boolean :pure
+      t.boolean :push
+      t.boolean :fade
+      t.boolean :slice
+      t.boolean :left
+      t.boolean :right
+      t.boolean :center
+      t.boolean :lob
+      t.boolean :pop_up
+      t.boolean :shank
+      t.boolean :skull
       t.boolean :over_club
       t.boolean :under_club
-      t.boolean :high_trajectory
-      t.boolean :low_trajectory
-      t.boolean :chunked
-      t.boolean :topped
-      t.boolean :in_cup
-      t.boolean :on_apron
-      t.boolean :on_green
-      t.boolean :in_rough
-      t.boolean :on_beach
-      t.boolean :in_drink
+      t.boolean :high
+      t.boolean :low
+      t.boolean :chunk
+      t.boolean :top
+      t.boolean :soft
+      t.boolean :hard
+
+      t.boolean :cup
+      t.boolean :apron
+      t.boolean :green
+      t.boolean :rough
+      t.boolean :beach
+      t.boolean :drink
       t.boolean :out_of_bounds
-      t.boolean :on_downslope
-      t.boolean :on_upslope
-      t.boolean :on_side_hill_right
-      t.boolean :on_side_hill_left
-      t.boolean :obstructed_by_trees
-      t.boolean :on_fairway
-      t.boolean :take_mulligan
-      t.boolean :take_drop
+      t.boolean :downslope
+      t.boolean :upslope
+      t.boolean :side_hill_right
+      t.boolean :side_hill_left
+      t.boolean :obstructed
+      t.boolean :fairway
+
+      t.boolean :mulligan
+      t.boolean :drop
+      t.boolean :practice
+
       t.references :round, index: true
       t.references :club, index: true
       t.references :played_hole, index: true
