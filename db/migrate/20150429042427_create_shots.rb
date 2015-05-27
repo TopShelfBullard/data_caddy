@@ -7,14 +7,12 @@ class CreateShots < ActiveRecord::Migration
       t.boolean :tee_middle
       t.boolean :off_the_turf
       t.boolean :elevated_tee
-
       t.boolean :punch
       t.boolean :trick
       t.boolean :full
       t.boolean :quarter
       t.boolean :half
       t.boolean :three_quarters
-
       t.boolean :hook
       t.boolean :draw
       t.boolean :pull
@@ -37,7 +35,7 @@ class CreateShots < ActiveRecord::Migration
       t.boolean :top
       t.boolean :soft
       t.boolean :hard
-
+      t.boolean :sweet_spot
       t.boolean :cup
       t.boolean :apron
       t.boolean :green
@@ -51,11 +49,9 @@ class CreateShots < ActiveRecord::Migration
       t.boolean :side_hill_left
       t.boolean :obstructed
       t.boolean :fairway
-
       t.boolean :mulligan
       t.boolean :drop
       t.boolean :practice
-
       t.references :round, index: true
       t.references :club, index: true
       t.references :played_hole, index: true
