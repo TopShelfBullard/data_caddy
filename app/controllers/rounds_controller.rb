@@ -66,9 +66,9 @@ class RoundsController < ApplicationController
       putts = 0
 
       played_hole.shots.each do |shot|
-        score = shot.take_mulligan ? score : score + 1
-        score = shot.take_drop ? score : score + 2
-        mulligans = shot.take_mulligan ? mulligans + 1 : mulligans
+        score = shot.mulligan ? score : score + 1
+        score = shot.drop ? score : score + 2
+        mulligans = shot.mulligan ? mulligans + 1 : mulligans
         putts = shot.club.name == "Putter" ? putts + 1 : putts
       end
 
