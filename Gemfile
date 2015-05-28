@@ -49,5 +49,8 @@ group :development, :test do
 
   # rspec for tests
   gem 'rspec-rails', '~> 3.2.1'
+
+  # Want to test. Don't want to think about running tests
+  gem 'guard-rspec', require: false
 end
 
