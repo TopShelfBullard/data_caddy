@@ -41,6 +41,7 @@ class ShotsController < ApplicationController
   private
   def set_shot
     @shot = @played_hole.shots.find(params[:id])
+
   end
 
   def set_played_hole

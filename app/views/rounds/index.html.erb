@@ -3,6 +3,9 @@
 <%= link_to 'New Round', new_round_path %>
 <br>
 <%= link_to 'New Course', new_course_path %>
+<br>
+<%= link_to 'New Club', new_club_path %>
+<br>
 <% @rounds.each do |round| %>
     <%= link_to 'View Round', round %>
     <p><%= round.player.name %></p>
