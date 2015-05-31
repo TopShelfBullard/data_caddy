@@ -1,52 +1,53 @@
 require 'rails_helper'
 
 RSpec.describe CoursesController, type: :controller do
+  include Devise::TestHelpers
 
   describe "GET #index" do
     it "returns http success" do
-      get :index
+      sign_in(Player.find(1) ? Player.find(1) : Player.create!(email: 'jeffery@obviouslynotagolfer.com', password: 'password'))
       expect(response).to have_http_status(:success)
     end
   end
 
   describe "GET #show" do
     it "returns http success" do
-      get :show
+      sign_in(Player.find(1) ? Player.find(1) : Player.create!(email: 'jeffery@obviouslynotagolfer.com', password: 'password'))
       expect(response).to have_http_status(:success)
     end
   end
 
   describe "GET #new" do
     it "returns http success" do
-      get :new
+      sign_in(Player.find(1) ? Player.find(1) : Player.create!(email: 'jeffery@obviouslynotagolfer.com', password: 'password'))
       expect(response).to have_http_status(:success)
     end
   end
 
   describe "GET #edit" do
     it "returns http success" do
-      get :edit
+      sign_in(Player.find(1) ? Player.find(1) : Player.create!(email: 'jeffery@obviouslynotagolfer.com', password: 'password'))
       expect(response).to have_http_status(:success)
     end
   end
 
   describe "GET #create" do
     it "returns http success" do
-      get :create
+      sign_in(Player.find(1) ? Player.find(1) : Player.create!(email: 'jeffery@obviouslynotagolfer.com', password: 'password'))
       expect(response).to have_http_status(:success)
     end
   end
 
   describe "GET #update" do
     it "returns http success" do
-      get :update
+      sign_in(Player.find(1) ? Player.find(1) : Player.create!(email: 'jeffery@obviouslynotagolfer.com', password: 'password'))
       expect(response).to have_http_status(:success)
     end
   end
 
   describe "GET #destroy" do
     it "returns http success" do
-      get :destroy
+      sign_in(Player.find(1) ? Player.find(1) : Player.create!(email: 'jeffery@obviouslynotagolfer.com', password: 'password'))
       expect(response).to have_http_status(:success)
     end
   end
