@@ -1,6 +1,6 @@
 class RoundsController < ApplicationController
   def index
-    @rounds = Round.all
+    @rounds = Round.where(player_id: current_player.id)
   end
 
   def show
@@ -67,7 +67,7 @@ class RoundsController < ApplicationController
 
       played_hole.shots.each do |shot|
         score = shot.mulligan ? score : score + 1
-        score = shot.drop ? score : score + 2
+        score = shot.drop ? score + 1 : score
         mulligans = shot.mulligan ? mulligans + 1 : mulligans
         putts = shot.club.name == "Putter" ? putts + 1 : putts
       end
