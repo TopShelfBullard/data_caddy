@@ -52,6 +52,7 @@ class CreateShots < ActiveRecord::Migration
       t.boolean :mulligan
       t.boolean :drop
       t.boolean :practice
+      t.integer :played_hole_id
       t.references :round, index: true
       t.references :club, index: true
       t.references :played_hole, index: true
