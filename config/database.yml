@@ -11,9 +11,3 @@ development:
 test:
   <<: *default
   database: data_caddy_test
-
-production:
-  <<: *default
-  database: data_caddy_production
-  username: mbullard
-  password: <%= ENV['SOME_APP_DATABASE_PASSWORD'] %>
