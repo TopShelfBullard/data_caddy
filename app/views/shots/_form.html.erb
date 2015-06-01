@@ -19,7 +19,7 @@
           <%= f.label :club %><br><%= f.select(:club_id, options_for_select(@club_options)) %>
         </div>
 
-        <% if !@is_tee %>
+        <% if @is_tee %>
             <div class="field"><%= f.label :tee_up %><%= f.check_box :tee_up %></div>
             <div class="field"><%= f.label :tee_down %><%= f.check_box :tee_down %></div>
             <div class="field"><%= f.label :tee_middle %><%= f.check_box :tee_middle %></div>

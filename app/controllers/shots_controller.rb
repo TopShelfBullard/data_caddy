@@ -7,6 +7,8 @@ class ShotsController < ApplicationController
 
   def new
     @shot = @played_hole.shots.build
+    @shot.number = @played_hole.shots.length
+    @is_tee = is_tee(@shot)
     @club_options = Club.all.map{|club| ["#{club.name}", club.id]}
   end
 
