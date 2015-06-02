@@ -1,0 +1,68 @@
+one:
+  id: 1
+  number: 1
+  played_hole_id: 1
+  round_id: 1
+  mulligan: true
+  club_id: 2
+
+two:
+  id: 2
+  number: 2
+  played_hole_id: 1
+  round_id: 1
+  mulligan: true
+  club_id: 2
+
+three:
+  id: 3
+  number: 3
+  played_hole_id: 1
+  round_id: 1
+  drop: true
+  club_id: 2
+
+four:
+  id: 4
+  number: 4
+  played_hole_id: 1
+  round_id: 1
+  drop: true
+  club_id: 2
+
+five:
+  id: 5
+  number: 5
+  played_hole_id: 1
+  round_id: 1
+  practice: true
+  club_id: 2
+
+six:
+  id: 6
+  number: 6
+  played_hole_id: 1
+  round_id: 1
+  practice: true
+  club_id: 2
+
+seven:
+  id: 7
+  number: 7
+  played_hole_id: 1
+  round_id: 1
+  club_id: 1
+
+eight:
+  id: 8
+  number: 8
+  played_hole_id: 1
+  round_id: 1
+  club_id: 1
+
+nine:
+  id: 9
+  number: 9
+  played_hole_id: 1
+  round_id: 1
+  club_id: 1
