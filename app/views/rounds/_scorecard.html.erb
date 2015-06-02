@@ -4,7 +4,7 @@
         <div class="played_hole">
             <p><%= hole[:number] %>. PAR: <%= hole[:par]%> - DISTANCE: <%= hole[:distance]%></p>
             <blockquote>
-              SCORE: <%= hole[:score] %> - MULLIGANS: <%= hole[:mulligans] %> - PUTTS: <%= hole[:putts] %>
+              SCORE: <%= hole[:score] %> - MULLIGANS: <%= hole[:mulligans] %> - DROPS: <%= hole[:drops] %> - PRACTICE SHOTS: <%= hole[:practice_shots] %> - PUTTS: <%= hole[:putts] %>
             </blockquote>
 
             <%= link_to 'View Hole', hole[:played_hole] %>
