@@ -8,7 +8,7 @@ class ShotsController < ApplicationController
   def new
     @shot = @played_hole.shots.build
     @shot.number = @played_hole.shots.length
-    @is_tee = is_tee(@shot)
+    @is_tee = Shot.is_teeing_off(@shot)
     @club_options = Club.all.map{|club| ["#{club.name}", club.id]}
   end
 
@@ -23,9 +23,11 @@ class ShotsController < ApplicationController
   end
 
   def edit
-    @is_tee = is_tee(@shot)
-    @prep_entered = prep_entered(@shot)
-    @result_entered = result_entered(@shot)
+    @is_tee = Shot.is_teeing_off(@shot)
+    @prep_entered = Shot.has_prepared(@shot)
+    @result_entered = Shot.has_evaluated_result(@shot)
+    @is_putting = Shot.is_putting(@shot)
+    @shot.green = true if @is_putting
     @all_entered = @prep_entered && @result_entered
     @club_options = Club.all.map{|club| ["#{club.name}", club.id]}
   end
@@ -55,22 +57,5 @@ class ShotsController < ApplicationController
       :lob, :pop_up, :shank, :skull, :over_club, :under_club, :high, :low, :chunk, :top, :soft, :hard, :cup, :apron, :green,
       :rough, :beach, :drink, :out_of_bounds, :downslope, :upslope, :side_hill_right, :side_hill_left, :obstructed, :fairway,
       :mulligan, :drop, :practice, :round_id, :club_id, :played_hole_id, :sweet_spot )
-  end
-
-  def is_tee(shot)
-    shot.number == 1
-  end
-
-  def prep_entered(shot)
-    shot.club_id || shot.punch || shot.trick || shot.full || shot.quarter || shot.half || shot.three_quarters ||
-        shot.tee_up || shot.tee_down || shot.tee_middle || shot.off_the_turf || shot.elevated_tee
-  end
-
-  def result_entered(shot)
-    shot.cup || shot.apron || shot.green || shot.rough || shot.beach  || shot.drink || shot.out_of_bounds || shot.downslope ||
-      shot.upslope ||shot.side_hill_right || shot.side_hill_left || shot.obstructed || shot.fairway || shot.hook || shot.draw ||
-      shot.pull || shot.pure || shot.push || shot.fade || shot.shot_slice || shot.left || shot.right || shot.center || shot.lob ||
-      shot.pop_up || shot.shank || shot.skull || shot.over_club || shot.under_club || shot.high || shot.low || shot.chunk ||
-      shot.top ||shot.soft || shot.hard || shot.mulligan || shot.drop || shot.practice || shot.sweet_spot
   end
 end

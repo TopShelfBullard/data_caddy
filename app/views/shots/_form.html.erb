@@ -18,75 +18,85 @@
         <div class="field">
           <%= f.label :club %><br><%= f.select(:club_id, options_for_select(@club_options)) %>
         </div>
-
-        <% if @is_tee %>
-            <div class="field"><%= f.label :tee_up %><%= f.check_box :tee_up %></div>
-            <div class="field"><%= f.label :tee_down %><%= f.check_box :tee_down %></div>
-            <div class="field"><%= f.label :tee_middle %><%= f.check_box :tee_middle %></div>
-            <div class="field"><%= f.label :off_the_turf %><%= f.check_box :off_the_turf %></div>
-            <div class="field"><%= f.label :elevated_tee %><%= f.check_box :elevated_tee %></div>
-        <% else %>
-            <h3>Shot type</h3>
-            <div class="field"><%= f.label :punch %><%= f.check_box :punch %></div>
-            <div class="field"><%= f.label :trick %><%= f.check_box :trick %></div>
-            <div class="field"><%= f.label :full %><%= f.check_box :full %></div>
-            <div class="field"><%= f.label :quarter %><%= f.check_box :quarter %></div>
-            <div class="field"><%= f.label :half %><%= f.check_box :half %></div>
-            <div class="field"><%= f.label :three_quarters %><%= f.check_box :three_quarters %></div>
+        <% if !@is_putting %>
+            <% if @is_tee %>
+                <div class="field"><%= f.label :tee_up %><%= f.check_box :tee_up %></div>
+                <div class="field"><%= f.label :tee_down %><%= f.check_box :tee_down %></div>
+                <div class="field"><%= f.label :tee_middle %><%= f.check_box :tee_middle %></div>
+                <div class="field"><%= f.label :off_the_turf %><%= f.check_box :off_the_turf %></div>
+                <div class="field"><%= f.label :elevated_tee %><%= f.check_box :elevated_tee %></div>
+            <% else %>
+                <h3>Shot type</h3>
+                <div class="field"><%= f.label :punch %><%= f.check_box :punch %></div>
+                <div class="field"><%= f.label :trick %><%= f.check_box :trick %></div>
+                <div class="field"><%= f.label :full %><%= f.check_box :full %></div>
+                <div class="field"><%= f.label :quarter %><%= f.check_box :quarter %></div>
+                <div class="field"><%= f.label :half %><%= f.check_box :half %></div>
+                <div class="field"><%= f.label :three_quarters %><%= f.check_box :three_quarters %></div>
+            <% end %>
         <% end %>
     <% end %>
 
     <% if @prep_entered %>
         <h2>How'd it go?</h2>
         <hr>
-        <h3>Trajectory</h3>
-        <div class="field"><%= f.label :hook %><%= f.check_box :hook %></div>
-        <div class="field"><%= f.label :draw %><%= f.check_box :draw %></div>
-        <div class="field"><%= f.label :pull %><%= f.check_box :pull %></div>
-        <div class="field"><%= f.label :pure %><%= f.check_box :pure %></div>
-        <div class="field"><%= f.label :push %><%= f.check_box :push %></div>
-        <div class="field"><%= f.label :fade %><%= f.check_box :fade %></div>
-        <div class="field"><%= f.label :shot_slice %><%= f.check_box :shot_slice %></div>
-        <div class="field"><%= f.label :high %><%= f.check_box :high %></div>
-        <div class="field"><%= f.label :low %><%= f.check_box :low %></div>
-        <hr>
-        <h3>Aim and decision</h3>
-        <div class="field"><%= f.label :left %><%= f.check_box :left %></div>
-        <div class="field"><%= f.label :center %><%= f.check_box :center %></div>
-        <div class="field"><%= f.label :right %><%= f.check_box :right %></div>
-        <div class="field"><%= f.label :over_club %><%= f.check_box :over_club %></div>
-        <div class="field"><%= f.label :under_club %><%= f.check_box :under_club %></div>
-        <div class="field"><%= f.label :soft %><%= f.check_box :soft %></div>
-        <div class="field"><%= f.label :hard %><%= f.check_box :hard %></div>
-        <hr>
-        <h3>Strike</h3>
-        <div class="field"><%= f.label :sweet_spot %><%= f.check_box :sweet_spot %></div>
-        <div class="field"><%= f.label :lob %><%= f.check_box :lob %></div>
-        <div class="field"><%= f.label :pop_up %><%= f.check_box :pop_up %></div>
-        <div class="field"><%= f.label :shank %><%= f.check_box :shank %></div>
-        <div class="field"><%= f.label :skull %><%= f.check_box :skull %></div>
-        <div class="field"><%= f.label :chunk %><%= f.check_box :chunk %></div>
-        <div class="field"><%= f.label :top %><%= f.check_box :top %></div>
-        <hr>
-        <h3>Ly</h3>
-        <div class="field"><%= f.label :cup %><%= f.check_box :cup %></div>
-        <div class="field"><%= f.label :apron %><%= f.check_box :apron %></div>
-        <div class="field"><%= f.label :green %><%= f.check_box :green %></div>
-        <div class="field"><%= f.label :rough %><%= f.check_box :rough %></div>
-        <div class="field"><%= f.label :beach %><%= f.check_box :beach %></div>
-        <div class="field"><%= f.label :drink %><%= f.check_box :drink %></div>
-        <div class="field"><%= f.label :out_of_bounds %><%= f.check_box :out_of_bounds %></div>
-        <div class="field"><%= f.label :downslope %><%= f.check_box :downslope %></div>
-        <div class="field"><%= f.label :upslope %><%= f.check_box :upslope %></div>
-        <div class="field"><%= f.label :side_hill_right %><%= f.check_box :side_hill_right %></div>
-        <div class="field"><%= f.label :side_hill_left %><%= f.check_box :side_hill_left %></div>
-        <div class="field"><%= f.label :obstructed %><%= f.check_box :obstructed %></div>
-        <div class="field"><%= f.label :fairway %><%= f.check_box :fairway %></div>
-        <hr>
-        <h3>Action</h3>
-        <div class="field"><%= f.label :mulligan %><%= f.check_box :mulligan %></div>
-        <div class="field"><%= f.label :drop %><%= f.check_box :drop %></div>
-        <div class="field"><%= f.label :practice %><%= f.check_box :practice %></div>
+        <% if @is_putting %>
+            <div class="field"><%= f.label :cup %><%= f.check_box :cup %></div>
+            <div class="field"><%= f.label :soft %><%= f.check_box :soft %></div>
+            <div class="field"><%= f.label :hard %><%= f.check_box :hard %></div>
+            <div class="field"><%= f.label :left %><%= f.check_box :left %></div>
+            <div class="field"><%= f.label :center %><%= f.check_box :center %></div>
+            <div class="field"><%= f.label :right %><%= f.check_box :right %></div>
+        <% else %>
+            <h3>Trajectory</h3>
+            <div class="field"><%= f.label :hook %><%= f.check_box :hook %></div>
+            <div class="field"><%= f.label :draw %><%= f.check_box :draw %></div>
+            <div class="field"><%= f.label :pull %><%= f.check_box :pull %></div>
+            <div class="field"><%= f.label :pure %><%= f.check_box :pure %></div>
+            <div class="field"><%= f.label :push %><%= f.check_box :push %></div>
+            <div class="field"><%= f.label :fade %><%= f.check_box :fade %></div>
+            <div class="field"><%= f.label :shot_slice %><%= f.check_box :shot_slice %></div>
+            <div class="field"><%= f.label :high %><%= f.check_box :high %></div>
+            <div class="field"><%= f.label :low %><%= f.check_box :low %></div>
+            <hr>
+            <h3>Aim and decision</h3>
+            <div class="field"><%= f.label :left %><%= f.check_box :left %></div>
+            <div class="field"><%= f.label :center %><%= f.check_box :center %></div>
+            <div class="field"><%= f.label :right %><%= f.check_box :right %></div>
+            <div class="field"><%= f.label :over_club %><%= f.check_box :over_club %></div>
+            <div class="field"><%= f.label :under_club %><%= f.check_box :under_club %></div>
+            <div class="field"><%= f.label :soft %><%= f.check_box :soft %></div>
+            <div class="field"><%= f.label :hard %><%= f.check_box :hard %></div>
+            <hr>
+            <h3>Strike</h3>
+            <div class="field"><%= f.label :sweet_spot %><%= f.check_box :sweet_spot %></div>
+            <div class="field"><%= f.label :lob %><%= f.check_box :lob %></div>
+            <div class="field"><%= f.label :pop_up %><%= f.check_box :pop_up %></div>
+            <div class="field"><%= f.label :shank %><%= f.check_box :shank %></div>
+            <div class="field"><%= f.label :skull %><%= f.check_box :skull %></div>
+            <div class="field"><%= f.label :chunk %><%= f.check_box :chunk %></div>
+            <div class="field"><%= f.label :top %><%= f.check_box :top %></div>
+            <hr>
+            <h3>Ly</h3>
+            <div class="field"><%= f.label :cup %><%= f.check_box :cup %></div>
+            <div class="field"><%= f.label :apron %><%= f.check_box :apron %></div>
+            <div class="field"><%= f.label :green %><%= f.check_box :green %></div>
+            <div class="field"><%= f.label :rough %><%= f.check_box :rough %></div>
+            <div class="field"><%= f.label :beach %><%= f.check_box :beach %></div>
+            <div class="field"><%= f.label :drink %><%= f.check_box :drink %></div>
+            <div class="field"><%= f.label :out_of_bounds %><%= f.check_box :out_of_bounds %></div>
+            <div class="field"><%= f.label :downslope %><%= f.check_box :downslope %></div>
+            <div class="field"><%= f.label :upslope %><%= f.check_box :upslope %></div>
+            <div class="field"><%= f.label :side_hill_right %><%= f.check_box :side_hill_right %></div>
+            <div class="field"><%= f.label :side_hill_left %><%= f.check_box :side_hill_left %></div>
+            <div class="field"><%= f.label :obstructed %><%= f.check_box :obstructed %></div>
+            <div class="field"><%= f.label :fairway %><%= f.check_box :fairway %></div>
+            <hr>
+            <h3>Action</h3>
+            <div class="field"><%= f.label :mulligan %><%= f.check_box :mulligan %></div>
+            <div class="field"><%= f.label :drop %><%= f.check_box :drop %></div>
+            <div class="field"><%= f.label :practice %><%= f.check_box :practice %></div>
+        <% end %>
         <hr>
     <% end %>
 

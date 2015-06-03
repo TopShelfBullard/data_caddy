@@ -52,6 +52,7 @@ seven:
   played_hole_id: 1
   round_id: 1
   club_id: 1
+  green: true
 
 eight:
   id: 8
