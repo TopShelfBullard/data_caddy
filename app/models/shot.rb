@@ -7,7 +7,11 @@ class Shot < ActiveRecord::Base
   end
 
   def self.is_putting(shot)
-    shot.club.name == "Putter" || self.is_on_green(shot)
+    return false if shot.number.nil? || shot.number <= 1
+
+    on_the_green = self.previous_shot_was_on_the_green(shot)
+    shot.update(green: true, club_id: Club.find_by(name: "Putter").id) if on_the_green
+    on_the_green || shot.green
   end
 
   def self.has_prepared(shot)
@@ -24,11 +28,7 @@ class Shot < ActiveRecord::Base
   end
 
   private
-  def self.is_on_green(shot)
-    #TODO BUG ON THIS METHOD
-    last_shot = self.find_by(played_hole_id: shot.played_hole_id, number: shot.number - 1)
-    last_shot_landed_on_the_green = last_shot.nil? ? false : last_shot.green
-    used_the_putter_last_shot = last_shot.club.name == "Putter"
-    shot.green || last_shot_landed_on_the_green || used_the_putter_last_shot
+  def self.previous_shot_was_on_the_green(shot)
+    self.find_by(played_hole_id: shot.played_hole_id, number: shot.number - 1).green
   end
 end

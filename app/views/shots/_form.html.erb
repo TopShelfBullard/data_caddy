@@ -14,11 +14,13 @@
         </div>
     <% end %>
 
-    <% if !@prep_entered || @result_entered %>
+    <% if !@prep_entered %>
         <div class="field">
           <%= f.label :club %><br><%= f.select(:club_id, options_for_select(@club_options)) %>
         </div>
+
         <% if !@is_putting %>
+            <p>Right now the is no putting, because: shot.green - <%= @shot.green %>, is_putting - <%= @is_putting %></p>
             <% if @is_tee %>
                 <div class="field"><%= f.label :tee_up %><%= f.check_box :tee_up %></div>
                 <div class="field"><%= f.label :tee_down %><%= f.check_box :tee_down %></div>
@@ -35,12 +37,14 @@
                 <div class="field"><%= f.label :three_quarters %><%= f.check_box :three_quarters %></div>
             <% end %>
         <% end %>
+
     <% end %>
 
     <% if @prep_entered %>
         <h2>How'd it go?</h2>
         <hr>
         <% if @is_putting %>
+            <div class="field"><%= f.label :green %><%= f.check_box :green %></div>
             <div class="field"><%= f.label :cup %><%= f.check_box :cup %></div>
             <div class="field"><%= f.label :soft %><%= f.check_box :soft %></div>
             <div class="field"><%= f.label :hard %><%= f.check_box :hard %></div>
