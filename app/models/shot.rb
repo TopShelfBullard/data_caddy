@@ -2,33 +2,33 @@ class Shot < ActiveRecord::Base
   belongs_to :played_hole
   belongs_to :club
 
-  def self.is_teeing_off(shot)
-    shot.number == 1
+  def is_off_the_tee
+    self.number == 1
   end
 
-  def self.is_putting(shot)
-    return false if shot.number.nil? || shot.number <= 1
-
-    on_the_green = self.previous_shot_was_on_the_green(shot)
-    shot.update(green: true, club_id: Club.find_by(name: "Putter").id) if on_the_green
-    on_the_green || shot.green
+  def is_a_putt(played_hole)
+    self.previous_shot_was_on_the_green(played_hole) || self.green
   end
 
-  def self.has_prepared(shot)
-    shot.club_id || shot.punch || shot.trick || shot.full || shot.quarter || shot.half || shot.three_quarters ||
-        shot.tee_up || shot.tee_down || shot.tee_middle || shot.off_the_turf || shot.elevated_tee
+  def has_prepared
+    !self.club.nil?
   end
 
-  def self.has_evaluated_result(shot)
-    shot.cup || shot.apron || shot.green || shot.rough || shot.beach  || shot.drink || shot.out_of_bounds || shot.downslope ||
-        shot.upslope ||shot.side_hill_right || shot.side_hill_left || shot.obstructed || shot.fairway || shot.hook || shot.draw ||
-        shot.pull || shot.pure || shot.push || shot.fade || shot.shot_slice || shot.left || shot.right || shot.center || shot.lob ||
-        shot.pop_up || shot.shank || shot.skull || shot.over_club || shot.under_club || shot.high || shot.low || shot.chunk ||
-        shot.top ||shot.soft || shot.hard || shot.mulligan || shot.drop || shot.practice || shot.sweet_spot
+  def has_evaluated
+    self.cup || self.apron || self.green || self.rough || self.beach  || self.drink || self.out_of_bounds || self.downslope ||
+        self.upslope ||self.side_hill_right || self.side_hill_left || self.obstructed || self.fairway || self.hook || self.draw ||
+        self.pull || self.pure || self.push || self.fade || self.shot_slice || self.left || self.right || self.center || self.lob ||
+        self.pop_up || self.shank || self.skull || self.over_club || self.under_club || self.high || self.low || self.chunk ||
+        self.top ||self.soft || self.hard || self.mulligan || self.drop || self.practice || self.sweet_spot
   end
 
-  private
-  def self.previous_shot_was_on_the_green(shot)
-    self.find_by(played_hole_id: shot.played_hole_id, number: shot.number - 1).green
+  def previous_shot_was_on_the_green(played_hole)
+    previous_shot = self.previous_shot(played_hole)
+    previous_shot.nil? ? false : previous_shot.green
+  end
+
+  def previous_shot(played_hole)
+    previous_shot_index = played_hole.shots.length - 2
+    previous_shot_index >= 0 ? played_hole.shots[previous_shot_index] : nil
   end
 end

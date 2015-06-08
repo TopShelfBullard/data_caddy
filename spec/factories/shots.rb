@@ -1,0 +1,57 @@
+FactoryGirl.define do
+  factory :shot do
+    number 1
+    tee_up false
+    tee_down false
+    tee_middle false
+    off_the_turf false
+    elevated_tee false
+    punch false
+    trick false
+    full false
+    quarter false
+    half false
+    three_quarters false
+    hook false
+    draw false
+    pull false
+    pure false
+    push false
+    fade false
+    shot_slice false
+    left false
+    right false
+    center false
+    lob false
+    pop_up false
+    shank false
+    skull false
+    over_club false
+    under_club false
+    high false
+    low false
+    chunk false
+    top false
+    soft false
+    hard false
+    sweet_spot false
+    cup false
+    apron false
+    green false
+    rough false
+    beach false
+    drink false
+    out_of_bounds false
+    downslope false
+    upslope false
+    side_hill_right false
+    side_hill_left false
+    obstructed false
+    fairway false
+    mulligan false
+    drop false
+    practice false
+    played_hole nil
+    club nil
+  end
+end

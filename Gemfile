@@ -51,4 +51,7 @@ group :development, :test do
 
   # Want to test. Don't want to think about running tests
   gem 'guard-rspec', require: false
+
+  #factories
+  gem 'factory_girl_rails'
 end

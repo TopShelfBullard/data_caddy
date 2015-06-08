@@ -8,11 +8,9 @@ class ShotsController < ApplicationController
 
   def new
     @shot = @played_hole.shots.build
-    @shot.number = @played_hole.shots.length
-    @is_tee = Shot.is_teeing_off(@shot)
-    @prep_entered = Shot.has_prepared(@shot)
-    @result_entered = Shot.has_evaluated_result(@shot)
-    @is_putting = Shot.is_putting(@shot)
+    @prep_entered = @shot.has_prepared
+    @result_entered = @shot.has_evaluated
+    @is_putting = @shot.is_a_putt
     @all_entered = @prep_entered && @result_entered
     @club_options = Club.all.map{|club| ["#{club.name}", club.id]}
   end
