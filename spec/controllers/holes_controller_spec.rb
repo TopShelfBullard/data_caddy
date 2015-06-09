@@ -4,64 +4,57 @@ include Devise::TestHelpers
 RSpec.describe HolesController, type: :controller do
 
   # describe "GET #index" do
-  #   fixtures :players
-  #
+  #   player = Player.create(email: "jeffery@obviouslynotagolfer.com")
   #   it "returns http success" do
-  #     sign_in(Player.find(1))
+  #     sign_in(player)
   #     expect(response).to have_http_status(:success)
   #   end
   # end
   #
   # describe "GET #show" do
-  #   fixtures :players
-  #
+  #   player = Player.create(email: "jeffery@obviouslynotagolfer.com")
   #   it "returns http success" do
-  #     sign_in(Player.find(1))
+  #     sign_in(player)
   #     expect(response).to have_http_status(:success)
   #   end
   # end
   #
   # describe "GET #new" do
-  #   fixtures :players
-  #
+  #   player = Player.create(email: "jeffery@obviouslynotagolfer.com")
   #   it "returns http success" do
-  #     sign_in(Player.find(1))
+  #     sign_in(player)
   #     expect(response).to have_http_status(:success)
   #   end
   # end
   #
   # describe "GET #edit" do
-  #   fixtures :players
-  #
+  #   player = Player.create(email: "jeffery@obviouslynotagolfer.com")
   #   it "returns http success" do
-  #     sign_in(Player.find(1))
+  #     sign_in(player)
   #     expect(response).to have_http_status(:success)
   #   end
   # end
   #
   # describe "GET #create" do
-  #   fixtures :players
-  #
+  #   player = Player.create(email: "jeffery@obviouslynotagolfer.com")
   #   it "returns http success" do
-  #     sign_in(Player.find(1))
+  #     sign_in(player)
   #     expect(response).to have_http_status(:success)
   #   end
   # end
   #
   # describe "GET #update" do
-  #   fixtures :players
-  #
+  #   player = Player.create(email: "jeffery@obviouslynotagolfer.com")
   #   it "returns http success" do
-  #     sign_in(Player.find(1))
+  #     sign_in(player)
   #     expect(response).to have_http_status(:success)
   #   end
   # end
   #
   # describe "GET #destroy" do
-  #   fixtures :players
-  #
+  #   player = Player.create(email: "jeffery@obviouslynotagolfer.com")
   #   it "returns http success" do
-  #     sign_in(Player.find(1))
+  #     sign_in(player)
   #     expect(response).to have_http_status(:success)
   #   end
   # end
