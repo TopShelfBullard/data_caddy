@@ -61,10 +61,6 @@ class ShotsController < ApplicationController
     @club_options = @club_options.unshift(@club_options.pop) if @is_putting
   end
 
-  def set_stage
-    @played_hole = PlayedHole.find(params[:played_hole_id])
-  end
-
   def shot_params
     params.require(:shot).permit( :number, :tee_up, :tee_down, :tee_middle, :off_the_turf, :elevated_tee, :punch, :trick,
       :full, :quarter, :half, :three_quarters, :hook, :draw, :pull, :pure, :push, :fade, :shot_slice, :left, :right, :center,
