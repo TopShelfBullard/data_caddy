@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   resources :rounds do
     resources :courses
     resources :played_holes
@@ -18,7 +17,7 @@ Rails.application.routes.draw do
   end
 
   resources :clubs
-
+  resources :rounds
   devise_for :players
 
   root 'rounds#index'
