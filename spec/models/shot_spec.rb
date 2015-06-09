@@ -1,252 +1,252 @@
 require 'rails_helper'
-require 'factory_girl_rails'
+
 RSpec.describe Shot, type: :model do
 
   it "knows when I'm at the tee-box" do
-    shot = FactoryGirl.build(:shot, number: 1)
+    shot = Shot.new(number: 1)
     expect(shot.is_off_the_tee).to be_truthy
   end
 
   it "knows when I'm not at the tee-box" do
-    shot = FactoryGirl.build(:shot, number: 2)
+    shot = Shot.new(number: 2)
     expect(shot.is_off_the_tee).to be_falsey
   end
 
   it "knows when I'm putting cause I'm on the green" do
-    hole = FactoryGirl.create(:hole)
-    played_hole = FactoryGirl.create(:played_hole, hole: hole)
-    shot1 = FactoryGirl.create(:shot, played_hole: played_hole, number: 1)
-    shot2 = FactoryGirl.create(:shot, played_hole: played_hole, number: 2, green: true)
-    shot3 = FactoryGirl.create(:shot, played_hole: played_hole, number: 3)
+    hole = Hole.create()
+    played_hole = PlayedHole.create(hole_id: hole.id)
+    shot1 = Shot.create(played_hole_id: played_hole.id, number: 1)
+    shot2 = Shot.create(played_hole_id: played_hole.id, number: 2, green: true)
+    shot3 = Shot.create(played_hole_id: played_hole.id, number: 3)
 
-    expect(shot3.is_a_putt(played_hole)).to be_truthy
+    expect(shot3.is_a_putt).to be_truthy
   end
 
   it "knows when I'm not putting cause I'm not on the green" do
-    hole = FactoryGirl.create(:hole)
-    played_hole = FactoryGirl.create(:played_hole, hole: hole)
-    shot1 = FactoryGirl.create(:shot, played_hole: played_hole, number: 1)
-    shot2 = FactoryGirl.create(:shot, played_hole: played_hole, number: 2)
-    shot3 = FactoryGirl.create(:shot, played_hole: played_hole, number: 3)
+    hole = Hole.create()
+    played_hole = PlayedHole.create(hole_id: hole.id)
+    shot1 = Shot.create(played_hole_id: played_hole.id, number: 1)
+    shot2 = Shot.create(played_hole_id: played_hole.id, number: 2)
+    shot3 = Shot.create(played_hole_id: played_hole.id, number: 3)
 
-    expect(shot3.is_a_putt(played_hole)).to be_falsey
+    expect(shot3.is_a_putt).to be_falsey
   end
 
   it "knows I'm done planning my shot because I've selected a club" do
-    hole = FactoryGirl.create(:hole)
-    played_hole = FactoryGirl.create(:played_hole, hole: hole)
-    club = FactoryGirl.create(:club)
-    shot = FactoryGirl.create(:shot, played_hole: played_hole, club: club)
+    hole = Hole.create()
+    played_hole = PlayedHole.create(hole: hole)
+    club = Club.create()
+    shot = Shot.create(played_hole: played_hole, club_id: club.id)
 
     expect(shot.has_prepared).to be_truthy
   end
 
   it "knows I'm not done planning my shot because I haven't selected a club" do
-    hole = FactoryGirl.create(:hole)
-    played_hole = FactoryGirl.create(:played_hole, hole: hole)
-    shot = FactoryGirl.create(:shot, played_hole: played_hole)
+    hole = Hole.create()
+    played_hole = PlayedHole.create(hole: hole)
+    shot = Shot.create(played_hole: played_hole)
 
     expect(shot.has_prepared).to be_falsey
   end
 
   it "knows I'm done assessing the damage cause I said it's in the cup. Mark it, Dude." do
-    shot = FactoryGirl.build(:shot, cup: true)
+    shot = Shot.new(cup: true)
     expect(shot.has_evaluated).to be_truthy
   end
 
   it "knows I'm done assessing the damage cause I said it's on the apron" do
-    shot = FactoryGirl.build(:shot, apron: true)
+    shot = Shot.new(apron: true)
     expect(shot.has_evaluated).to be_truthy
   end
 
   it "knows I'm done assessing the damage cause I said it's on the green" do
-    shot = FactoryGirl.build(:shot, green: true)
+    shot = Shot.new(green: true)
     expect(shot.has_evaluated).to be_truthy
   end
 
   it "knows I'm done assessing the damage cause I said in the rough" do
-    shot = FactoryGirl.build(:shot, rough: true)
+    shot = Shot.new(rough: true)
     expect(shot.has_evaluated).to be_truthy
   end
 
   it "knows I'm done assessing the damage cause I said on the beach" do
-    shot = FactoryGirl.build(:shot, beach: true)
+    shot = Shot.new(beach: true)
     expect(shot.has_evaluated).to be_truthy
   end
 
   it "knows I'm done assessing the damage cause I said in the drink" do
-    shot = FactoryGirl.build(:shot, drink: true)
+    shot = Shot.new(drink: true)
     expect(shot.has_evaluated).to be_truthy
   end
 
   it "knows I'm done assessing the damage cause I said out of bounds" do
-    shot = FactoryGirl.build(:shot, out_of_bounds: true)
+    shot = Shot.new(out_of_bounds: true)
     expect(shot.has_evaluated).to be_truthy
   end
 
   it "knows I'm done assessing the damage cause I said on a down-slope" do
-    shot = FactoryGirl.build(:shot, downslope: true)
+    shot = Shot.new(downslope: true)
     expect(shot.has_evaluated).to be_truthy
   end
 
   it "knows I'm done assessing the damage cause I said it's on an up-slope" do
-    shot = FactoryGirl.build(:shot, upslope: true)
+    shot = Shot.new(upslope: true)
     expect(shot.has_evaluated).to be_truthy
   end
 
   it "knows I'm done assessing the damage cause I said it's on a right sloping side hill" do
-    shot = FactoryGirl.build(:shot, side_hill_right: true)
+    shot = Shot.new(side_hill_right: true)
     expect(shot.has_evaluated).to be_truthy
   end
 
   it "knows I'm done assessing the damage cause I said it's on a left sloping side hill" do
-    shot = FactoryGirl.build(:shot, side_hill_left: true)
+    shot = Shot.new(side_hill_left: true)
     expect(shot.has_evaluated).to be_truthy
   end
 
   it "knows I'm done assessing the damage cause I said it's behind a stupid-ass obstruction" do
-    shot = FactoryGirl.build(:shot, obstructed: true)
+    shot = Shot.new(obstructed: true)
     expect(shot.has_evaluated).to be_truthy
   end
 
   it "knows I'm done assessing the damage cause I said it's one the fairway" do
-    shot = FactoryGirl.build(:shot, fairway: true)
+    shot = Shot.new(fairway: true)
     expect(shot.has_evaluated).to be_truthy
   end
 
   it "knows I'm done assessing the damage cause I said I hooked it" do
-      shot = FactoryGirl.build(:shot, hook: true)
+      shot = Shot.new(hook: true)
       expect(shot.has_evaluated).to be_truthy
   end
 
   it "knows I'm done assessing the damage cause I said my shot had a bit of a draw" do
-    shot = FactoryGirl.build(:shot, draw: true)
+    shot = Shot.new(draw: true)
     expect(shot.has_evaluated).to be_truthy
   end
 
   it "knows I'm done assessing the damage cause I said pulled it" do
-    shot = FactoryGirl.build(:shot, pull: true)
+    shot = Shot.new(pull: true)
     expect(shot.has_evaluated).to be_truthy
   end
 
   it "knows I'm done assessing the damage cause I said my shot was pure" do
-    shot = FactoryGirl.build(:shot, pure: true)
+    shot = Shot.new(pure: true)
     expect(shot.has_evaluated).to be_truthy
   end
 
   it "knows I'm done assessing the damage cause I said I pushed it" do
-    shot = FactoryGirl.build(:shot, push: true)
+    shot = Shot.new( push: true)
     expect(shot.has_evaluated).to be_truthy
   end
 
   it "knows I'm done assessing the damage cause I said my shot had a bit of a fade" do
-    shot = FactoryGirl.build(:shot, fade: true)
+    shot = Shot.new(fade: true)
     expect(shot.has_evaluated).to be_truthy
   end
 
   it "knows I'm done assessing the damage cause I said I sliced it" do
-   shot = FactoryGirl.build(:shot, shot_slice: true)
+   shot = Shot.new(shot_slice: true)
    expect(shot.has_evaluated).to be_truthy
   end
 
   it "knows I'm done assessing the damage cause I said I shot left" do
-    shot = FactoryGirl.build(:shot, left: true)
+    shot = Shot.new(left: true)
     expect(shot.has_evaluated).to be_truthy
   end
 
   it "knows I'm done assessing the damage cause I said shot straight" do
-    shot = FactoryGirl.build(:shot, center: true)
+    shot = Shot.new(center: true)
     expect(shot.has_evaluated).to be_truthy
   end
 
   it "knows I'm done assessing the damage cause I said I lobbed it" do
-    shot = FactoryGirl.build(:shot, lob: true)
+    shot = Shot.new(lob: true)
     expect(shot.has_evaluated).to be_truthy
   end
 
   it "knows I'm done assessing the damage cause I said it was a popup" do
-    shot = FactoryGirl.build(:shot, pop_up: true)
+    shot = Shot.new(pop_up: true)
     expect(shot.has_evaluated).to be_truthy
   end
 
   it "knows I'm done assessing the damage cause I said I shanked it" do
-    shot = FactoryGirl.build(:shot, shank: true)
+    shot = Shot.new(shank: true)
     expect(shot.has_evaluated).to be_truthy
   end
 
   it "knows I'm done assessing the damage cause I said I skulled it" do
-    shot = FactoryGirl.build(:shot, skull: true)
+    shot = Shot.new(skull: true)
     expect(shot.has_evaluated).to be_truthy
   end
 
   it "knows I'm done assessing the damage cause I said I over-clubbed" do
-    shot = FactoryGirl.build(:shot, over_club: true)
+    shot = Shot.new(over_club: true)
     expect(shot.has_evaluated).to be_truthy
   end
 
   it "knows I'm done assessing the damage cause I said I under-clubbed" do
-    shot = FactoryGirl.build(:shot, under_club: true)
+    shot = Shot.new(under_club: true)
     expect(shot.has_evaluated).to be_truthy
   end
 
   it "knows I'm done assessing the damage cause I said the trajectory was high" do
-    shot = FactoryGirl.build(:shot, high: true)
+    shot = Shot.new(high: true)
     expect(shot.has_evaluated).to be_truthy
   end
 
   it "knows I'm done assessing the damage cause I said  trajectory was low" do
-    shot = FactoryGirl.build(:shot, low: true)
+    shot = Shot.new(low: true)
     expect(shot.has_evaluated).to be_truthy
   end
 
   it "knows I'm done assessing the damage cause I said I chunked it" do
-    shot = FactoryGirl.build(:shot, chunk: true)
+    shot = Shot.new(chunk: true)
     expect(shot.has_evaluated).to be_truthy
   end
 
   it "knows I'm done assessing the damage cause I said I topped it" do
-    shot = FactoryGirl.build(:shot, top: true)
+    shot = Shot.new(top: true)
     expect(shot.has_evaluated).to be_truthy
   end
 
   it "knows I'm done assessing the damage cause I said I shot too soft" do
-    shot = FactoryGirl.build(:shot, soft: true)
+    shot = Shot.new(soft: true)
     expect(shot.has_evaluated).to be_truthy
   end
 
   it "knows I'm done assessing the damage cause I said I shot too hard" do
-    shot = FactoryGirl.build(:shot, hard: true)
+    shot = Shot.new(hard: true)
     expect(shot.has_evaluated).to be_truthy
   end
 
   it "knows I'm done assessing the damage cause I said I took a mulligan" do
-    shot = FactoryGirl.build(:shot, mulligan: true)
+    shot = Shot.new(mulligan: true)
     expect(shot.has_evaluated).to be_truthy
   end
 
   it "knows I'm done assessing the damage cause I said I took a drop" do
-    shot = FactoryGirl.build(:shot, drop: true)
+    shot = Shot.new(drop: true)
     expect(shot.has_evaluated).to be_truthy
   end
 
   it "knows I'm done assessing the damage cause I said It was a practice shot" do
-    shot = FactoryGirl.build(:shot, practice: true)
+    shot = Shot.new(practice: true)
     expect(shot.has_evaluated).to be_truthy
   end
 
   it "knows I'm done assessing the damage cause I said I hit the sweet spot" do
-    shot = FactoryGirl.build(:shot, sweet_spot: true)
+    shot = Shot.new(sweet_spot: true)
     expect(shot.has_evaluated).to be_truthy
   end
 
   it "knows I'm not done assessing the damage cause I haven't entered shit" do
-    shot = FactoryGirl.build(:shot)
+    shot = Shot.new()
     expect(shot.has_evaluated).to be_falsey
   end
 
   it "knows I'm haven't assesed the damage even though I've entered a bunch of stuff" do
-    club = FactoryGirl.build(:club)
-    shot = FactoryGirl.build(:shot, club: club, punch: true, trick: true, full: true,
+    club = Club.new()
+    shot = Shot.new(club_id: club.id, punch: true, trick: true, full: true,
                              quarter: true, half: true, three_quarters: true, tee_up: true, tee_down: true, tee_middle: true,
                              off_the_turf: true, elevated_tee: true)
     expect(shot.has_evaluated).to be_falsey
