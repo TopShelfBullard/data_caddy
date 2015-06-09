@@ -1,13 +1,12 @@
-<h1>Round <%="for #{current_player.name}" if player_signed_in?%></h1>
-
+<br><br>
 <%= link_to 'New Round', new_round_path %>
 <br>
 <%= link_to 'New Course', new_course_path %>
 <br>
 <%= link_to 'New Club', new_club_path %>
 <br>
+<h1>Rounds <%="for #{current_player.name}" if player_signed_in?%></h1>
 <% @rounds.each do |round| %>
-    <br>
     <%= link_to "#{round.player.name} - #{round.date} - #{round.course.name}", round %>
     <br>
 <% end %>
