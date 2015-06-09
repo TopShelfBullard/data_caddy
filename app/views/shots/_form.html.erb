@@ -14,7 +14,7 @@
         </div>
     <% end %>
 
-    <% if !@prep_entered %>
+    <% if !@prep_entered || @all_entered %>
         <div class="field">
           <%= f.label :club %><br><%= f.select(:club_id, options_for_select(@club_options)) %>
         </div>
@@ -40,7 +40,7 @@
 
     <% end %>
 
-    <% if @prep_entered %>
+    <% if @prep_entered || @all_entered %>
         <h2>How'd it go?</h2>
         <hr>
         <% if @is_putting %>

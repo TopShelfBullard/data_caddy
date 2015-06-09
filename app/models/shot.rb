@@ -6,8 +6,12 @@ class Shot < ActiveRecord::Base
     self.number == 1
   end
 
-  def is_a_putt(played_hole)
-    self.previous_shot_was_on_the_green(played_hole) || self.green
+  def is_a_putt
+    is_putt = self.previous_shot_was_on_the_green
+    # self.green = is_putt
+    puts self.number
+    puts self.green
+    is_putt
   end
 
   def has_prepared
@@ -22,13 +26,13 @@ class Shot < ActiveRecord::Base
         self.top ||self.soft || self.hard || self.mulligan || self.drop || self.practice || self.sweet_spot
   end
 
-  def previous_shot_was_on_the_green(played_hole)
-    previous_shot = self.previous_shot(played_hole)
+  def previous_shot_was_on_the_green
+    previous_shot = self.previous_shot
     previous_shot.nil? ? false : previous_shot.green
   end
 
-  def previous_shot(played_hole)
-    previous_shot_index = played_hole.shots.length - 2
-    previous_shot_index >= 0 ? played_hole.shots[previous_shot_index] : nil
+  def previous_shot
+    previous_shot_index = self.number - 2
+    previous_shot_index >= 0 ? self.played_hole.shots[previous_shot_index] : nil
   end
 end

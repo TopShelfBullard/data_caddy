@@ -20,7 +20,7 @@ class Scorecard
       data[:practice_shots] = shot.practice ? data[:practice_shots] + 1 : data[:practice_shots]
       data[:drops] = shot.drop ? data[:drops] + 1 : data[:drops]
       data[:mulligans] = shot.mulligan ? data[:mulligans] + 1 : data[:mulligans]
-      data[:putts] = shot.club.name == "Putter" ? data[:putts] + 1 : data[:putts]
+      data[:putts] = shot.is_a_putt ? data[:putts] + 1 : data[:putts]
     end
 
     data
