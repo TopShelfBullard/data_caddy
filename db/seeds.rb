@@ -56,7 +56,7 @@ Hole.create!(number: 16, par: 4, distance: 391, course_id: bogus_course.id)
 Hole.create!(number: 17, par: 3, distance: 158, course_id: bogus_course.id)
 Hole.create!(number: 18, par: 5, distance: 510, course_id: bogus_course.id)
 
-round = Round.create!(date: "05-18-2015", score: 63, finished: true, course: timber_terrace, player: jeffery)
+round = Round.create!(date: "2015-05-18", score: 63, finished: true, course: timber_terrace, player: jeffery)
 
 played_hole_one = PlayedHole.create!(hole_id: timber_terrace_one.id, round_id: round.id, player_id: jeffery.id)
 played_hole_two = PlayedHole.create!(hole_id: timber_terrace_two.id, round_id: round.id, player_id: jeffery.id)
