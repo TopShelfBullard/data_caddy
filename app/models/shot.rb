@@ -7,11 +7,9 @@ class Shot < ActiveRecord::Base
   end
 
   def is_a_putt
-    is_putt = self.previous_shot_was_on_the_green
-    # self.green = is_putt
-    puts self.number
-    puts self.green
-    is_putt
+    ball_is_on_the_green = self.previous_shot_was_on_the_green
+    player_is_using_the_putter = self.club.nil? ? false : self.club.name == "Putter"
+    ball_is_on_the_green || player_is_using_the_putter
   end
 
   def has_prepared
