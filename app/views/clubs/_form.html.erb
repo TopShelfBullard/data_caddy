@@ -20,19 +20,10 @@
     </div>
 
     <div class="field">
-      <%= f.label :abbreviation %><br>
-      <%= f.text_field :abbreviation %>
+      <%= f.label :position %><br>
+      <%= f.text_field :position %>
     </div>
 
-    <p>
-      <%= f.label :shaft %>
-      <%= f.select(:shaft, options_for_select(@shaft_options)) %>
-    </p>
-
-    <p>
-      <%= f.label :head %>
-      <%= f.select(:head, options_for_select(@head_options)) %>
-    </p>
     <p>
       <%= f.submit %>
     </p>
