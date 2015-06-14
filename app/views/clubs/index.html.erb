@@ -1,4 +1,0 @@
-<%= link_to 'New Club', new_club_path %>
-<% @clubs.each do |club| %>
-    <p><%= link_to "#{club.name}", club %> | <%= link_to 'Destroy', club, method: :delete, data: { confirm: 'Are you sure?' } %> - <%= link_to 'edit', club %></p>
-<% end %>
