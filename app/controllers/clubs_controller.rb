@@ -1,4 +1,10 @@
 class ClubsController < ApplicationController
+  before_action :set_club, only: [:show, :edit, :update, :destroy]
+
+  def index
+    @clubs = Club.all
+  end
+
   def show
     @club = Club.find(params[:id])
   end
@@ -20,8 +26,6 @@ class ClubsController < ApplicationController
   end
 
   def create
-    @club = Club.new(club_params)
-
     if @club.save
       redirect_to @club
     else
@@ -30,8 +34,6 @@ class ClubsController < ApplicationController
   end
 
   def update
-    @club = Club.find(params[:id])
-
     if @club.update(club_params)
       redirect_to @club
 
@@ -40,8 +42,17 @@ class ClubsController < ApplicationController
     end
   end
 
+  def destroy
+    @club.destroy
+    redirect_to clubs_path
+  end
+
   private
   def club_params
     params.require(:club).permit(:name, :head, :shaft, :abbreviation)
+  end
+
+  def set_club
+    @club = Club.find(params[:id])
   end
 end
