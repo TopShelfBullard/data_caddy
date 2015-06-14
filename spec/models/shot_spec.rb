@@ -49,69 +49,79 @@ RSpec.describe Shot, type: :model do
     expect(shot.has_prepared).to be_falsey
   end
 
-  it "knows I'm done assessing the damage cause I said it's in the cup. Mark it, Dude." do
+  it "knows I've entered ly info cause I said it's in the cup. Mark it, Dude." do
     shot = Shot.new(cup: true)
-    expect(shot.has_evaluated).to be_truthy
+    expect(shot.entered_ly).to be_truthy
   end
 
-  it "knows I'm done assessing the damage cause I said it's on the apron" do
+  it "knows I've entered ly info cause I said it's on the apron" do
     shot = Shot.new(apron: true)
-    expect(shot.has_evaluated).to be_truthy
+    expect(shot.entered_ly).to be_truthy
   end
 
-  it "knows I'm done assessing the damage cause I said it's on the green" do
+  it "knows I've entered ly info cause I said it's on the green" do
     shot = Shot.new(green: true)
-    expect(shot.has_evaluated).to be_truthy
+    expect(shot.entered_ly).to be_truthy
   end
 
-  it "knows I'm done assessing the damage cause I said in the rough" do
+  it "knows I've entered ly info cause I said in the rough" do
     shot = Shot.new(rough: true)
-    expect(shot.has_evaluated).to be_truthy
+    expect(shot.entered_ly).to be_truthy
   end
 
-  it "knows I'm done assessing the damage cause I said on the beach" do
+  it "knows I've entered ly info cause I said on the beach" do
     shot = Shot.new(beach: true)
-    expect(shot.has_evaluated).to be_truthy
+    expect(shot.entered_ly).to be_truthy
   end
 
-  it "knows I'm done assessing the damage cause I said in the drink" do
+  it "knows I've entered ly info cause I said in the drink" do
     shot = Shot.new(drink: true)
-    expect(shot.has_evaluated).to be_truthy
+    expect(shot.entered_ly).to be_truthy
   end
 
-  it "knows I'm done assessing the damage cause I said out of bounds" do
+  it "knows I've entered ly info cause I said out of bounds" do
     shot = Shot.new(out_of_bounds: true)
-    expect(shot.has_evaluated).to be_truthy
+    expect(shot.entered_ly).to be_truthy
   end
 
-  it "knows I'm done assessing the damage cause I said on a down-slope" do
+  it "knows I've entered ly info cause I said on a down-slope" do
     shot = Shot.new(downslope: true)
-    expect(shot.has_evaluated).to be_truthy
+    expect(shot.entered_ly).to be_truthy
   end
 
-  it "knows I'm done assessing the damage cause I said it's on an up-slope" do
+  it "knows I've entered ly info cause I said it's on an up-slope" do
     shot = Shot.new(upslope: true)
-    expect(shot.has_evaluated).to be_truthy
+    expect(shot.entered_ly).to be_truthy
   end
 
-  it "knows I'm done assessing the damage cause I said it's on a right sloping side hill" do
+  it "knows I've entered ly info cause I said it's on a right sloping side hill" do
     shot = Shot.new(side_hill_right: true)
-    expect(shot.has_evaluated).to be_truthy
+    expect(shot.entered_ly).to be_truthy
   end
 
-  it "knows I'm done assessing the damage cause I said it's on a left sloping side hill" do
+  it "knows I've entered ly info cause I said it's on a left sloping side hill" do
     shot = Shot.new(side_hill_left: true)
-    expect(shot.has_evaluated).to be_truthy
+    expect(shot.entered_ly).to be_truthy
   end
 
-  it "knows I'm done assessing the damage cause I said it's behind a stupid-ass obstruction" do
+  it "knows I've entered ly info cause I said it's behind a stupid-ass obstruction" do
     shot = Shot.new(obstructed: true)
-    expect(shot.has_evaluated).to be_truthy
+    expect(shot.entered_ly).to be_truthy
   end
 
-  it "knows I'm done assessing the damage cause I said it's one the fairway" do
+  it "knows I've entered ly info cause I said it's one the fairway" do
     shot = Shot.new(fairway: true)
-    expect(shot.has_evaluated).to be_truthy
+    expect(shot.entered_ly).to be_truthy
+  end
+
+  it "knows I haven't entered ly info even though I've entered a bunch of stuff" do
+    club = Club.new()
+    shot = Shot.new(club_id: club.id, punch: true, trick: true, full: true, quarter: true, half: true, three_quarters: true,
+                    tee_up: true, tee_down: true, tee_middle: true, off_the_turf: true, elevated_tee: true, hook: true, draw: true,
+                    pull: true, pure: true, push: true, fade: true, shot_slice: true, left: true, right: true, center: true,
+                    lob: true, pop_up: true, shank: true, skull: true, over_club: true, under_club: true, high: true, low: true,
+                    chunk: true, top: true, soft: true, hard: true, mulligan: true, drop: true, practice: true, sweet_spot: true)
+    expect(shot.entered_ly).to be_falsey
   end
 
   it "knows I'm done assessing the damage cause I said I hooked it" do
@@ -246,9 +256,8 @@ RSpec.describe Shot, type: :model do
 
   it "knows I'm haven't assesed the damage even though I've entered a bunch of stuff" do
     club = Club.new()
-    shot = Shot.new(club_id: club.id, punch: true, trick: true, full: true,
-                             quarter: true, half: true, three_quarters: true, tee_up: true, tee_down: true, tee_middle: true,
-                             off_the_turf: true, elevated_tee: true)
+    shot = Shot.new(club_id: club.id, punch: true, trick: true, full: true, quarter: true, half: true, three_quarters: true,
+                    tee_up: true, tee_down: true, tee_middle: true, off_the_turf: true, elevated_tee: true)
     expect(shot.has_evaluated).to be_falsey
   end
 end
