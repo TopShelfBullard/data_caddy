@@ -20,12 +20,12 @@ class Shot < ActiveRecord::Base
     self.hook || self.draw || self.pull || self.banana_hook || self.banana_slice || self.pure || self.push || self.fade ||
         self.shot_slice || self.left || self.right || self.center || self.lob ||self.pop_up || self.shank || self.skull ||
         self.over_club || self.under_club || self.high || self.low || self.chunk || self.top ||self.soft || self.hard ||
-        self.mulligan || self.drop || self.practice || self.sweet_spot
+        self.mulligan || self.drop || self.practice || self.sweet_spot || self.gimme || self.worm_burner
   end
 
   def entered_ly
-    self.cup || self.apron || self.green || self.rough || self.beach  || self.drink || self.out_of_bounds || self.downslope ||
-        self.upslope ||self.side_hill_right || self.side_hill_left || self.obstructed || self.fairway
+    self.cup || self.apron || self.green || self.rough || self.beach  || self.drink || self.out_of_bounds || self.knocked_in_bounds ||
+        self.downslope || self.upslope ||self.side_hill_right || self.side_hill_left || self.obstructed || self.fairway
   end
 
   def previous_shot_was_on_the_green

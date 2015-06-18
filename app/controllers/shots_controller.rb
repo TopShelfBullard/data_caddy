@@ -68,9 +68,10 @@ class ShotsController < ApplicationController
 
   def shot_params
     params.require(:shot).permit( :number, :tee_up, :tee_down, :tee_middle, :off_the_turf, :elevated_tee, :punch, :trick,
-      :full, :quarter, :half, :three_quarters, :hook, :draw, :pull, :banana_hook, :pure, :banana_hook, :push, :fade,
-      :shot_slice, :left, :right, :center, :lob, :pop_up, :shank, :skull, :over_club, :under_club, :high, :low, :chunk,
-      :top, :soft, :hard, :cup, :apron, :green, :rough, :beach, :drink, :out_of_bounds, :downslope, :upslope, :side_hill_right,
-      :side_hill_left, :obstructed, :fairway, :mulligan, :drop, :practice, :round_id, :club_id, :played_hole_id, :sweet_spot )
+      :full, :quarter, :half, :three_quarters, :gimme, :knocked_in_bounds, :worm_burner, :hook, :draw, :pull, :banana_hook,
+      :pure, :banana_hook, :push, :fade, :shot_slice, :left, :right, :center, :lob, :pop_up, :shank, :skull, :over_club,
+      :under_club, :high, :low, :chunk, :top, :soft, :hard, :cup, :apron, :green, :rough, :beach, :drink, :out_of_bounds,
+      :downslope, :upslope, :side_hill_right, :side_hill_left, :obstructed, :fairway, :mulligan, :drop, :practice, :round_id,
+      :club_id, :played_hole_id, :sweet_spot )
   end
 end
