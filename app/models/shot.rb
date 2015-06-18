@@ -17,9 +17,10 @@ class Shot < ActiveRecord::Base
   end
 
   def has_evaluated
-    self.hook || self.draw || self.pull || self.pure || self.push || self.fade || self.shot_slice || self.left || self.right ||
-        self.center || self.lob ||self.pop_up || self.shank || self.skull || self.over_club || self.under_club || self.high ||
-        self.low || self.chunk || self.top ||self.soft || self.hard || self.mulligan || self.drop || self.practice || self.sweet_spot
+    self.hook || self.draw || self.pull || self.banana_hook || self.banana_slice || self.pure || self.push || self.fade ||
+        self.shot_slice || self.left || self.right || self.center || self.lob ||self.pop_up || self.shank || self.skull ||
+        self.over_club || self.under_club || self.high || self.low || self.chunk || self.top ||self.soft || self.hard ||
+        self.mulligan || self.drop || self.practice || self.sweet_spot
   end
 
   def entered_ly
