@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150618211405) do
+ActiveRecord::Schema.define(version: 20150618212608) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,63 +84,66 @@ ActiveRecord::Schema.define(version: 20150618211405) do
 
   create_table "shots", force: :cascade do |t|
     t.integer  "number"
-    t.boolean  "tee_up",          default: false
-    t.boolean  "tee_down",        default: false
-    t.boolean  "tee_middle",      default: false
-    t.boolean  "off_the_turf",    default: false
-    t.boolean  "elevated_tee",    default: false
-    t.boolean  "punch",           default: false
-    t.boolean  "trick",           default: false
-    t.boolean  "full",            default: false
-    t.boolean  "quarter",         default: false
-    t.boolean  "half",            default: false
-    t.boolean  "three_quarters",  default: false
-    t.boolean  "hook",            default: false
-    t.boolean  "draw",            default: false
-    t.boolean  "pull",            default: false
-    t.boolean  "pure",            default: false
-    t.boolean  "push",            default: false
-    t.boolean  "fade",            default: false
-    t.boolean  "shot_slice",      default: false
-    t.boolean  "left",            default: false
-    t.boolean  "right",           default: false
-    t.boolean  "center",          default: false
-    t.boolean  "lob",             default: false
-    t.boolean  "pop_up",          default: false
-    t.boolean  "shank",           default: false
-    t.boolean  "skull",           default: false
-    t.boolean  "over_club",       default: false
-    t.boolean  "under_club",      default: false
-    t.boolean  "high",            default: false
-    t.boolean  "low",             default: false
-    t.boolean  "chunk",           default: false
-    t.boolean  "top",             default: false
-    t.boolean  "soft",            default: false
-    t.boolean  "hard",            default: false
-    t.boolean  "sweet_spot",      default: false
-    t.boolean  "cup",             default: false
-    t.boolean  "apron",           default: false
-    t.boolean  "green",           default: false
-    t.boolean  "rough",           default: false
-    t.boolean  "beach",           default: false
-    t.boolean  "drink",           default: false
-    t.boolean  "out_of_bounds",   default: false
-    t.boolean  "downslope",       default: false
-    t.boolean  "upslope",         default: false
-    t.boolean  "side_hill_right", default: false
-    t.boolean  "side_hill_left",  default: false
-    t.boolean  "obstructed",      default: false
-    t.boolean  "fairway",         default: false
-    t.boolean  "mulligan",        default: false
-    t.boolean  "drop",            default: false
-    t.boolean  "practice",        default: false
+    t.boolean  "tee_up",            default: false
+    t.boolean  "tee_down",          default: false
+    t.boolean  "tee_middle",        default: false
+    t.boolean  "off_the_turf",      default: false
+    t.boolean  "elevated_tee",      default: false
+    t.boolean  "punch",             default: false
+    t.boolean  "trick",             default: false
+    t.boolean  "full",              default: false
+    t.boolean  "quarter",           default: false
+    t.boolean  "half",              default: false
+    t.boolean  "three_quarters",    default: false
+    t.boolean  "hook",              default: false
+    t.boolean  "draw",              default: false
+    t.boolean  "pull",              default: false
+    t.boolean  "pure",              default: false
+    t.boolean  "push",              default: false
+    t.boolean  "fade",              default: false
+    t.boolean  "shot_slice",        default: false
+    t.boolean  "left",              default: false
+    t.boolean  "right",             default: false
+    t.boolean  "center",            default: false
+    t.boolean  "lob",               default: false
+    t.boolean  "pop_up",            default: false
+    t.boolean  "shank",             default: false
+    t.boolean  "skull",             default: false
+    t.boolean  "over_club",         default: false
+    t.boolean  "under_club",        default: false
+    t.boolean  "high",              default: false
+    t.boolean  "low",               default: false
+    t.boolean  "chunk",             default: false
+    t.boolean  "top",               default: false
+    t.boolean  "soft",              default: false
+    t.boolean  "hard",              default: false
+    t.boolean  "sweet_spot",        default: false
+    t.boolean  "cup",               default: false
+    t.boolean  "apron",             default: false
+    t.boolean  "green",             default: false
+    t.boolean  "rough",             default: false
+    t.boolean  "beach",             default: false
+    t.boolean  "drink",             default: false
+    t.boolean  "out_of_bounds",     default: false
+    t.boolean  "downslope",         default: false
+    t.boolean  "upslope",           default: false
+    t.boolean  "side_hill_right",   default: false
+    t.boolean  "side_hill_left",    default: false
+    t.boolean  "obstructed",        default: false
+    t.boolean  "fairway",           default: false
+    t.boolean  "mulligan",          default: false
+    t.boolean  "drop",              default: false
+    t.boolean  "practice",          default: false
     t.integer  "played_hole_id"
     t.integer  "round_id"
     t.integer  "club_id"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
-    t.boolean  "banana_hook",     default: false
-    t.boolean  "banana_slice",    default: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.boolean  "banana_hook",       default: false
+    t.boolean  "banana_slice",      default: false
+    t.boolean  "gimme",             default: false
+    t.boolean  "knocked_in_bounds", default: false
+    t.boolean  "worm_burner",       default: false
   end
 
   add_index "shots", ["club_id"], name: "index_shots_on_club_id", using: :btree
