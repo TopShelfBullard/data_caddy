@@ -60,12 +60,13 @@
                </div>
 
                <div class="checkboxes well">
-                   <%= f.check_box :gimme %>  <%= f.label :gimme %><br>
-                   <%= f.check_box :soft %>   <%= f.label :too_soft %><br>
-                   <%= f.check_box :hard %>   <%= f.label :too_hard %><br>
-                   <%= f.check_box :left %>   <%= f.label :shot_left %><br>
-                   <%= f.check_box :right %>  <%= f.label :shot_right %><br>
-                   <%= f.check_box :center %> <%= f.label :perfect_line %>
+                   <%= f.check_box :gimme %>      <%= f.label :gimme %><br>
+                   <%= f.check_box :soft %>       <%= f.label :too_soft %><br>
+                   <%= f.check_box :hard %>       <%= f.label :too_hard %><br>
+                   <%= f.check_box :good_speed %> <%= f.label :good_speed %><br>
+                   <%= f.check_box :left %>       <%= f.label :shot_left %><br>
+                   <%= f.check_box :right %>      <%= f.label :shot_right %><br>
+                   <%= f.check_box :center %>     <%= f.label :perfect_line %>
                </div>
 
            <% else %>
@@ -77,23 +78,21 @@
 
                <h5>Yaw:</h5>
                <div class="checkboxes well">
-                   <%= f.check_box :hook %>         <%= f.label :hook %><br>
-                   <%= f.check_box :draw %>         <%= f.label :draw %><br>
-                   <%= f.check_box :pull %>         <%= f.label :pull %><br>
-                   <%= f.check_box :banana_hook %>  <%= f.label :banana_hook %><br>
-                   <%= f.check_box :pure %>         <%= f.label :pure %><br>
-                   <%= f.check_box :banana_slice %> <%= f.label :banana_slice %><br>
-                   <%= f.check_box :push %>         <%= f.label :push %><br>
-                   <%= f.check_box :fade %>         <%= f.label :fade %> <br>
-                   <%= f.check_box :shot_slice %>   <%= f.label :slice %>
+                   <%= f.check_box :hook %>       <%= f.label :hook %><br>
+                   <%= f.check_box :draw %>       <%= f.label :draw %><br>
+                   <%= f.check_box :pull %>       <%= f.label :pull %><br>
+                   <%= f.check_box :pure %>       <%= f.label :pure %><br>
+                   <%= f.check_box :push %>       <%= f.label :push %><br>
+                   <%= f.check_box :fade %>       <%= f.label :fade %> <br>
+                   <%= f.check_box :shot_slice %> <%= f.label :slice %>
                </div>
 
                <h5>Distance:</h5>
                <div class="checkboxes well">
                    <%= f.check_box :over_club %>  <%= f.label :over_clubbed %><br>
                    <%= f.check_box :under_club %> <%= f.label :under_clubbed %><br>
-                   <%= f.check_box :soft %> <%= f.label :too_soft %><br>
-                   <%= f.check_box :hard %> <%= f.label :too_hard %>
+                   <%= f.check_box :soft %>       <%= f.label :too_soft %><br>
+                   <%= f.check_box :hard %>       <%= f.label :too_hard %>
                </div>
 
                <h5>Aim:</h5>
@@ -107,6 +106,7 @@
                <div class="checkboxes well">
                    <%= f.check_box :sweet_spot %>  <%= f.label :sweet_spot %><br>
                    <%= f.check_box :lob %>         <%= f.label :lob %><br>
+                   <%= f.check_box :squib %>       <%= f.label :squib %><br>
                    <%= f.check_box :pop_up %>      <%= f.label :popped_up %><br>
                    <%= f.check_box :shank %>       <%= f.label :shanked_it %><br>
                    <%= f.check_box :skull %>       <%= f.label :skulled_it %><br>
