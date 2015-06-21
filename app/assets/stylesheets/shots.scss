@@ -2,10 +2,58 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.shot_form {
-  text-align: left;
+
+$xs: 480px;
+$sm: 768px;
+$md: 992px;
+$lg: 1200px;
+
+@mixin with_browser_prefixes($attribute, $value) {
+  -webkit-#{$attribute}: $value;
+  -moz-#{$attribute}: $value;
+  -ms-#{$attribute}: $value;
+  #{$attribute}: $value;
 }
 
-.label {
-  padding: 10px;
+@mixin column_styles($count, $gap, $rule_style, $rule_width) {
+  @include with_browser_prefixes(column-count, $count);
+  @include with_browser_prefixes(column-gap, $gap);
+  @include with_browser_prefixes(column-rule-style, $rule_style);
+  @include with_browser_prefixes(column-rule-width, $rule_width);
+}
+
+.shot_form {
+  text-align: justify;
+}
+
+.form_submit {
+  padding: 30px;
+}
+
+@media(min-width: $xs){
+  .checkboxes {
+    @include column_styles(2, 0px, none, 0px);
+  }
+}
+
+@media(min-width: $sm){
+  .checkboxes {
+    @include column_styles(3, 10px, none, 0px);
+  }
+}
+
+@media(min-width: $md){
+  .checkboxes {
+    @include column_styles(4, 10px, none, 0px);
+  }
+}
+
+@media(min-width: $lg){
+  .checkboxes {
+    @include column_styles(4, 10px, none, 0px);
+  }
+}
+
+.checkboxes {
+  margin-left: 20px;
 }

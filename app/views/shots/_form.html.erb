@@ -1,4 +1,4 @@
-<div class="shot_form col col-xs-10 offset-xs-1">
+<div class="shot_form col col-xs-12">
    <%= form_for([@played_hole, @shot]) do |f| %>
 
        <% if @shot.errors.any? %>
@@ -13,188 +13,149 @@
        <% end %>
 
        <% if !@prep_entered || @all_entered %>
-
-           <div class="form_section_header">
-               <h3>Select Club:</h3>
-           </div>
-
-           <div class="field">
-               <%= f.label :club %><%= f.select(:club_id, options_for_select(@club_options)) %>
-           </div>
+           <h1>Shot Prep</h1>
+           <br>
+           <%= f.label :club %>
+           <br>
+           <%= f.select(:club_id, options_for_select(@club_options)) %>
 
            <% if !@is_putting %>
+
                <% if @is_tee %>
-                   <div class="form_section_header">
-                       <h3>Tee Info</h3>
+                   <h5>Tee Info</h5>
+                   <div class="checkboxes well">
+                       <%= f.check_box :tee_up %>       <%= f.label :tee_up %><br>
+                       <%= f.check_box :tee_down %>     <%= f.label :tee_down %><br>
+                       <%= f.check_box :tee_middle %>   <%= f.label :tee_middle %><br>
+                       <%= f.check_box :off_the_turf %> <%= f.label :off_the_turf %><br>
+                       <%= f.check_box :elevated_tee %> <%= f.label :elevated_tee %>
                    </div>
+               <% else %>
+               <h1>Shot type</h1>
 
-                    <div class="col col-xs-6">
-                        <div class="field"><%= f.label :tee_up %>&nbsp;<%= f.check_box :tee_up %></div>
-                        <div class="field"><%= f.label :tee_down %><%= f.check_box :tee_down %></div>
-                        <div class="field"><%= f.label :tee_middle %>&nbsp;<%= f.check_box :tee_middle %></div>
-                    </div>
+               <h5>Strength</h5>
+               <div class="checkboxes well">
+                   <%= f.check_box :full %>           <%= f.label :full %><br>
+                   <%= f.check_box :quarter %>        <%= f.label :quarter %><br>
+                   <%= f.check_box :half %>           <%= f.label :half %><br>
+                   <%= f.check_box :three_quarters %> <%= f.label :three_quarters %>
+               </div>
 
-                    <div class="col col-xs-6">
-                        <div class="field"><%= f.label :hitting_off_the_turf %>&nbsp;<%= f.check_box :off_the_turf %></div>
-                        <div class="field"><%= f.label :elevated_tee %>&nbsp;<%= f.check_box :elevated_tee %></div>
-                    </div>
+               <h5>Trickiness</h5>
+               <div class="checkboxes well">
+                   <%= f.check_box :punch %> <%= f.label :punch %><br>
+                   <%= f.check_box :trick %> <%= f.label :trick %>
+               </div>
                <% end %>
-           <% else %>
-               <div class="form_section_header">
-                   <h3>Shot type</h3>
-               </div>
-
-               <div class="col col-xs-6">
-                   <h5>Strength</h5>
-                   <div class="field"><%= f.label :full %>&nbsp;<%= f.check_box :full %></div>
-                   <div class="field"><%= f.label :quarter %>&nbsp;<%= f.check_box :quarter %></div>
-                   <div class="field"><%= f.label :half %>&nbsp;<%= f.check_box :half %></div>
-                   <div class="field"><%= f.label :three_quarters %>&nbsp;<%= f.check_box :three_quarters %></div>
-               </div>
-
-               <div class="col col-xs-6"><h5>Trickiness</h5>
-                   <div class="field"><%= f.label :punch %>&nbsp;<%= f.check_box :punch %></div>
-                   <div class="field"><%= f.label :trick %>&nbsp;<%= f.check_box :trick %></div>
-               </div>
-
            <% end %>
        <% end %>
 
        <% if (@prep_entered && !@result_entered && !@ly_entered) || @all_entered %>
-           <div class="form_section_header">
-               <h2>How'd it go?</h2>
-           </div>
+           <h1>Result</h1>
 
            <% if @is_putting %>
-               <div class="form_section_header">
-                   <h3>Result</h3>
+               <div class="checkboxes well">
+                   <%= f.check_box :green %> <%= f.label :on_the_green %><br>
+                   <%= f.check_box :cup %>   <%= f.label :in_the_cup %>
                </div>
 
-               <div class="col col-xs-6">
-                   <h5>How'd you end up?</h5>
-                   <div class="field"><%= f.label :on_the_green %>&nbsp;<%= f.check_box :green %></div>
-                   <div class="field"><%= f.label :in_the_cup %>&nbsp;<%= f.check_box :cup %></div>
-               </div>
-
-               <div class="form_section_header">
-                   <h3>Reason</h3>
-               </div>
-
-               <div class="col col-xs-6">
-                   <h5>Why?</h5>
-                   <div class="field"><%= f.label :gimme %>&nbsp;<%= f.check_box :gimme %></div>
-                   <div class="field"><%= f.label :too_soft %>&nbsp;<%= f.check_box :soft %></div>
-                   <div class="field"><%= f.label :too_hard %>&nbsp;<%= f.check_box :hard %></div>
-                   <div class="field"><%= f.label :shot_left %>&nbsp;<%= f.check_box :left %></div>
-                   <div class="field"><%= f.label :shot_right %>&nbsp;<%= f.check_box :right %></div>
-                   <div class="field"><%= f.label :perfect_line %>&nbsp;<%= f.check_box :center %></div>
+               <div class="checkboxes well">
+                   <%= f.check_box :gimme %>  <%= f.label :gimme %><br>
+                   <%= f.check_box :soft %>   <%= f.label :too_soft %><br>
+                   <%= f.check_box :hard %>   <%= f.label :too_hard %><br>
+                   <%= f.check_box :left %>   <%= f.label :shot_left %><br>
+                   <%= f.check_box :right %>  <%= f.label :shot_right %><br>
+                   <%= f.check_box :center %> <%= f.label :perfect_line %>
                </div>
 
            <% else %>
-
-               <div class="form_section_header">
-                   <h3>Trajectory</h3>
+               <h5>Pitch:</h5>
+               <div class="checkboxes well">
+                 <%= f.check_box :high %> <%= f.label :high %><br>
+                 <%= f.check_box :low %>  <%= f.label :low %>
                </div>
 
-               <div class="col col-xs-6">
-                   <h5>Pitch:</h5>
-                   <div class="field"><%= f.label :high %>&nbsp;<%= f.check_box :high %></div>
-                   <div class="field"><%= f.label :low %>&nbsp;<%= f.check_box :low %></div>
+               <h5>Yaw:</h5>
+               <div class="checkboxes well">
+                   <%= f.check_box :hook %>         <%= f.label :hook %><br>
+                   <%= f.check_box :draw %>         <%= f.label :draw %><br>
+                   <%= f.check_box :pull %>         <%= f.label :pull %><br>
+                   <%= f.check_box :banana_hook %>  <%= f.label :banana_hook %><br>
+                   <%= f.check_box :pure %>         <%= f.label :pure %><br>
+                   <%= f.check_box :banana_slice %> <%= f.label :banana_slice %><br>
+                   <%= f.check_box :push %>         <%= f.label :push %><br>
+                   <%= f.check_box :fade %>         <%= f.label :fade %> <br>
+                   <%= f.check_box :shot_slice %>   <%= f.label :slice %>
                </div>
 
-               <div class="col col-xs-6">
-                   <h5>Yaw:</h5>
-                   <div class="field"><%= f.label :hooked_it %>&nbsp;<%= f.check_box :hook %></div>
-                   <div class="field"><%= f.label :bit_of_a_draw %>&nbsp;<%= f.check_box :draw %></div>
-                   <div class="field"><%= f.label :pulled_it %>&nbsp;<%= f.check_box :pull %></div>
-                   <div class="field"><%= f.label :banana_hook %>&nbsp;<%= f.check_box :banana_hook %></div>
-                   <div class="field"><%= f.label :pure %>&nbsp;<%= f.check_box :pure %></div>
-                   <div class="field"><%= f.label :banana_slice %>&nbsp;<%= f.check_box :banana_slice %></div>
-                   <div class="field"><%= f.label :pushed_it %>&nbsp;<%= f.check_box :push %></div>
-                   <div class="field"><%= f.label :bit_of_a_fade %>&nbsp;<%= f.check_box :fade %></div>
-                   <div class="field"><%= f.label :sliced_it %>&nbsp;<%= f.check_box :shot_slice %></div>
+               <h5>Distance:</h5>
+               <div class="checkboxes well">
+                   <%= f.check_box :over_club %>  <%= f.label :over_clubbed %><br>
+                   <%= f.check_box :under_club %> <%= f.label :under_clubbed %><br>
+                   <%= f.check_box :soft %> <%= f.label :too_soft %><br>
+                   <%= f.check_box :hard %> <%= f.label :too_hard %>
                </div>
 
-               <div class="form_section_header">
-                   <h3>Aim and decision</h3>
+               <h5>Aim:</h5>
+               <div class="checkboxes well">
+                   <%= f.check_box :left %>   <%= f.label :shot_left %><br>
+                   <%= f.check_box :right %>  <%= f.label :shot_right %><br>
+                   <%= f.check_box :center %> <%= f.label :perfect_aim %>
                </div>
 
-               <div class="col col-xs-6">
-                   <h5>Club:</h5>
-                   <div class="field"><%= f.label :over_clubbed %>&nbsp;<%= f.check_box :over_club %></div>
-                   <div class="field"><%= f.label :under_clubbed %>&nbsp;<%= f.check_box :under_club %></div>
-
-                   <h5>Aim:</h5>
-                   <div class="field"><%= f.label :shot_left %>&nbsp;<%= f.check_box :left %></div>
-                   <div class="field"><%= f.label :shot_right %>&nbsp;<%= f.check_box :right %></div>
-                   <div class="field"><%= f.label :perfect_aim %>&nbsp;<%= f.check_box :center %></div>
-
-                   <h5>Strength:</h5>
-                   <div class="field"><%= f.label :too_soft %>&nbsp;<%= f.check_box :soft %></div>
-                   <div class="field"><%= f.label :too_hard %>&nbsp;<%= f.check_box :hard %></div>
-               </div>
-
-               <div class="form_section_header col col-xs-10 offset-xs-1">
-                   <h3>Strike</h3>
-               </div>
-
-               <div class="col col-xs-6">
-                   <div class="field"><%= f.label :hit_the_sweet_spot %>&nbsp;<%= f.check_box :sweet_spot %></div>
-                   <div class="field"><%= f.label :beautiful_lob %>&nbsp;<%= f.check_box :lob %></div>
-                   <div class="field"><%= f.label :popped_it_up %>&nbsp;<%= f.check_box :pop_up %></div>
-                   <div class="field"><%= f.label :shanked_it %>&nbsp;<%= f.check_box :shank %></div>
-               </div>
-
-               <div class="col col-xs-6">
-                   <div class="field"><%= f.label :skulled_it %>&nbsp;<%= f.check_box :skull %></div>
-                   <div class="field"><%= f.label :chunked_it %>&nbsp;<%= f.check_box :chunk %></div>
-                   <div class="field"><%= f.label :topped_it %>&nbsp;<%= f.check_box :top %></div>
-                   <div class="field"><%= f.label :worm_burner %>&nbsp;<%= f.check_box :worm_burner %></div>
+               <h5>Strike</h5>
+               <div class="checkboxes well">
+                   <%= f.check_box :sweet_spot %>  <%= f.label :sweet_spot %><br>
+                   <%= f.check_box :lob %>         <%= f.label :lob %><br>
+                   <%= f.check_box :pop_up %>      <%= f.label :popped_up %><br>
+                   <%= f.check_box :shank %>       <%= f.label :shanked_it %><br>
+                   <%= f.check_box :skull %>       <%= f.label :skulled_it %><br>
+                   <%= f.check_box :chunk %>       <%= f.label :chunked_it %><br>
+                   <%= f.check_box :top %>         <%= f.label :topped_it %><br>
+                   <%= f.check_box :worm_burner %> <%= f.label :worm_burner %>
                </div>
 
            <% end %>
        <% end %>
 
        <% if (@prep_entered && @result_entered && !@ly_entered) || @all_entered %>
-           <div class="form_section_header">
-               <h3>Ly</h3>
+           <h1>Ly</h1>
+
+           <h5>Good</h5>
+           <div class="checkboxes well">
+               <%= f.check_box :cup %>     <%= f.label :cup %><br>
+               <%= f.check_box :green %>   <%= f.label :green %><br>
+               <%= f.check_box :apron %>   <%= f.label :apron %><br>
+               <%= f.check_box :fairway %> <%= f.label :fairway %>
            </div>
 
-           <div class="col col-xs-6">
-               <h5>Nice!</h5>
-               <div class="field"><%= f.label :in_the_cup %>&nbsp;<%= f.check_box :cup %></div>
-               <div class="field"><%= f.label :on_the_green %>&nbsp;<%= f.check_box :green %></div>
-               <div class="field"><%= f.label :on_the_apron %>&nbsp;<%= f.check_box :apron %></div>
-               <div class="field"><%= f.label :on_the_fairway %>&nbsp;<%= f.check_box :fairway %></div>
+           <h5>Fair</h5>
+           <div class="checkboxes well">
+               <%= f.check_box :rough %>             <%= f.label :rough %><br>
+               <%= f.check_box :downslope %>         <%= f.label :downslope %><br>
+               <%= f.check_box :upslope %>           <%= f.label :upslope %><br>
+               <%= f.check_box :side_hill_right %>   <%= f.label :side_hill_right %><br>
+               <%= f.check_box :side_hill_left %>    <%= f.label :side_hill_left %><br>
+               <%= f.check_box :knocked_in_bounds %> <%= f.label :knocked_in_bounds %>
            </div>
 
-           <div class="col col-xs-6"></div>
-               <h5>Okay...</h5>
-               <div class="field"><%= f.label :in_the_rough %>&nbsp;<%= f.check_box :rough %></div>
-               <div class="field"><%= f.label :on_a_downslope %>&nbsp;<%= f.check_box :downslope %></div>
-               <div class="field"><%= f.label :on_an_upslope %>&nbsp;<%= f.check_box :upslope %></div>
-               <div class="field"><%= f.label :on_a_side_hill_sloping_right %>&nbsp;<%= f.check_box :side_hill_right %></div>
-               <div class="field"><%= f.label :side_hill_sloping_left %>&nbsp;<%= f.check_box :side_hill_left %></div>
-               <div class="field"><%= f.label :knocked_in_bounds %>&nbsp;<%= f.check_box :knocked_in_bounds %></div>
+           <h5>Poor</h5>
+           <div class="checkboxes well">
+               <%= f.check_box :obstructed %>    <%= f.label :obstructed %><br>
+               <%= f.check_box :beach %>         <%= f.label :beach %><br>
+               <%= f.check_box :drink %>         <%= f.label :drink %><br>
+               <%= f.check_box :out_of_bounds %> <%= f.label :out_of_bounds %>
            </div>
 
-           <div class="col col-xs-6">
-               <h5>Oops!</h5>
-               <div class="field"><%= f.label :next_shot_is_obstructed %>&nbsp;<%= f.check_box :obstructed %></div>
-               <div class="field"><%= f.label :on_the_beach %>&nbsp;<%= f.check_box :beach %></div>
-               <div class="field"><%= f.label :in_the_drink %>&nbsp;<%= f.check_box :drink %></div>
-               <div class="field"><%= f.label :out_of_bounds %>&nbsp;<%= f.check_box :out_of_bounds %></div>
-           </div>
-
-           <div class="col col-xs-6">
-               <h5>Action</h5>
-               <div class="field"><%= f.label :take_a_mulligan %>&nbsp;<%= f.check_box :mulligan %></div>
-               <div class="field"><%= f.label :take_a_drop %>&nbsp;<%= f.check_box :drop %></div>
-               <div class="field"><%= f.label :just_a_practice_swing %>&nbsp;<%= f.check_box :practice %></div>
+           <h5>Action</h5>
+           <div class="checkboxes well">
+               <%= f.check_box :mulligan %> <%= f.label :mulligan %><br>
+               <%= f.check_box :drop %>     <%= f.label :drop %><br>
+               <%= f.check_box :practice %> <%= f.label :practice_swing %>
            </div>
 
        <% end %>
 
-       <div class="col col-xs-10 offset-xs-1"><%= f.submit %></div>
+       <div class="button form_submit"><%= f.submit %></div>
     <% end %>
 </div>
