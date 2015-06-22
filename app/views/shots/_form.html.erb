@@ -1,5 +1,5 @@
 <div class="shot_form col col-xs-12">
-   <%= form_for([@played_hole, @shot]) do |f| %>
+   <%= form_for([@played_hole, @shot], remote: !@shot.has_evaluated) do |f| %>
 
        <% if @shot.errors.any? %>
            <div id="error_explanation">
