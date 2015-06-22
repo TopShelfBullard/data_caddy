@@ -3,7 +3,7 @@ class Shot < ActiveRecord::Base
   belongs_to :club
 
   def is_off_the_tee
-    self.number == 1
+    self.number == 1 || (self.number > 1 && self.previous_shot_was_a_mulligan_or_practice_swing_off_the_tee)
   end
 
   def is_a_putt
@@ -26,6 +26,12 @@ class Shot < ActiveRecord::Base
   def entered_ly
     self.cup || self.apron || self.green || self.rough || self.beach  || self.drink || self.out_of_bounds || self.knocked_in_bounds ||
         self.downslope || self.upslope ||self.side_hill_right || self.side_hill_left || self.obstructed || self.fairway
+  end
+
+  def previous_shot_was_a_mulligan_or_practice_swing_off_the_tee
+    previous_shot = self.previous_shot
+    return false unless previous_shot.mulligan || previous_shot.practice
+    previous_shot.number == 1 ? true : previous_shot.previous_shot_was_a_mulligan_or_practice_swing_off_the_tee
   end
 
   def previous_shot_was_on_the_green
